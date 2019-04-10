@@ -46,9 +46,6 @@
                       Email
                     </th>
                     <th>
-                      Editar
-                    </th>
-                    <th>
                       Remover
                     </th>
                   </tr>
@@ -67,19 +64,16 @@
                          while($professor = $pegar_professores->fetchObject()){
                       ?>
                       <td>
-                        <?php echo $professor->id_cliente; ?>
+                        <?php echo $professor->id; ?>
                       </td>
                       <td>
                         <?php echo $professor->nome; ?>
                       </td>
                       <td>
-                        <?php echo $professor->email_log; ?>
+                        <?php echo $professor->email; ?>
                       </td>
                       <td>
-                        <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>
-                      </td>
-                      <td>
-                        <a class="badge badge-gradient-danger" href="index.php?pagina=lisProfessor&deletar=sim&professor=<?php echo $professor->id_cliente; ?>">Remover</a>
+                        <a class="badge badge-gradient-danger" href="index.php?pagina=lisProfessor&deletar=sim&professor=<?php echo $professor->id; ?>">Remover</a>
                       </td>
                     </tr>
                    <?php }} ?>

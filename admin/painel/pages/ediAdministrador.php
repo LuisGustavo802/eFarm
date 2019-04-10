@@ -73,7 +73,7 @@
                         <?php echo $administrador->nome; ?>
                       </td>
                       <td>
-                        <?php echo $administrador->email_log; ?>
+                        <?php echo $administrador->email; ?>
                       </td>
                       <td>
                         <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>
