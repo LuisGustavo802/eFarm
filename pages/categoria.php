@@ -12,7 +12,7 @@
                     <div class="showing_fillter">
                         <div class="row m0">
                             <div class="first_fillter">
-                                <h4>Encontrados <?php echo $Site->getRegistros() ?> registros <h4>
+                                <h4>Encontrados <?php echo $Site->getRegistrosCat($pegar_categoria); ?> registros <h4>
                             </div>
                         </div>
                     </div>

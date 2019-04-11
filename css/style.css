@@ -6630,8 +6630,7 @@ i:before {
 .footer_widgets {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 50px;
 }
 
 .footer_bg {
@@ -6907,6 +6906,14 @@ i:before {
 
 .imgborder{
     border-bottom: 1px solid #159999;
+}
+
+.footer_copyright{
+  background-color: #159999;
+}
+
+.footer_copyright h5{
+  color: #fff;
 }
 /* End Parallax Footer Area css
 ============================================================================================ */

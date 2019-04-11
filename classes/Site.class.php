@@ -39,10 +39,24 @@
 
       //QUANTIDADE DE REGISTROS LOJA
       public function getRegistros(){
-          $regSQL = "SELECT ID FROM `tblcdsprod` ORDER BY ID DESC LIMIT 1";
+          $regSQL = "SELECT * FROM `tblcdsprod`";
           $executar_reg = self::conn()->prepare($regSQL);
-          $numReg = $executar_reg->execute();
-          return  $numReg;
+          $executar_reg->execute();
+          if($executar_reg->rowCount()==0){}else{
+              $qtdReg = $executar_reg->rowCount();
+              return $qtdReg;
+          }
+      }
+
+      //QUANTIDADE DE REGISTROS CATEGORIA
+      public function getRegistrosCat($pegar_categoria){
+          $regSQL = "SELECT * FROM `tblcdsprod` WHERE `categoria` = '$pegar_categoria'";
+          $executar_reg = self::conn()->prepare($regSQL);
+          $executar_reg->execute();
+          if($executar_reg->rowCount()==0){}else{
+              $qtdReg = $executar_reg->rowCount();
+              return $qtdReg;
+          }
       }
 
       //PAGINAS MENU TOP
