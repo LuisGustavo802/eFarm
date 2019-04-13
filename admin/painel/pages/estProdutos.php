@@ -68,7 +68,7 @@
                         <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>
                       </td>
                       <td>
-                        <a class="badge badge-gradient-danger" href="index.php?pagina=editarProdutos&deletar=sim&produto=<?php echo $produto->id; ?>">Remover</a>
+                        <a class="badge badge-gradient-danger" href="index.php?pagina=editProdutos&deletar=sim&produto=<?php echo $produto->id; ?>">Remover</a>
                       </td>
                     </tr>
                    <?php }} ?>

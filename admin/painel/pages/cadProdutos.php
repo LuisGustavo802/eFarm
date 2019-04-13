@@ -49,25 +49,9 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
                         );
         if($Site->inserir('tblcdsprod', $dados)){
            $_SESSION['ultimoId'] = BD::conn()->lastInsertId();
-           echo  ' <div class="card">
-                     <div class="card-body">
-                        <div class="card bg-gradient-success card-img-holder text-white">
-                           <div class="card-body">
-                             <h4 class="font-weight-normal mb-3">Ok, produto cadastrado corretamente!</h4>
-                           </div>
-                         </div>
-                     </div>
-                   </div>';
+           echo '<script>alert("Ok, produto cadastrado com sucesso!");location:href="index.php?pagina=lisProdutos"</script>'
         }else{
-          echo  ' <div class="card">
-                    <div class="card-body">
-                       <div class="card bg-gradient-danger card-img-holder text-white">
-                          <div class="card-body">
-                            <h4 class="font-weight-normal mb-3">Erro, não foi possivel cadastrar o produto!</h4>
-                          </div>
-                        </div>
-                    </div>
-                  </div>';
+           echo '<script>alert("Erro, não foi possível cadastrar esse produto!");location:href="index.php?pagina=lisProdutos"</script>'
         }
      }
 endif;

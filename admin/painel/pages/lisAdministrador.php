@@ -3,25 +3,9 @@
      $idAdministrador = (int)$_GET['administrador'];
      $deletar_administrador = BD::conn()->prepare("DELETE FROM `tblcdsadm` WHERE id = ?");
      if($deletar_administrador->execute(array($idAdministrador))){
-       echo  ' <div class="card">
-                 <div class="card-body">
-                    <div class="card bg-gradient-success card-img-holder text-white">
-                       <div class="card-body">
-                         <h4 class="font-weight-normal mb-3">Ok, professor removido com sucesso!</h4>
-                       </div>
-                     </div>
-                 </div>
-               </div>';
+       echo '<script>alert("Ok, administrador removido com sucesso!");location:href="index.php?pagina=lisAdministrador"</script>';
      }else{
-       echo  ' <div class="card">
-                 <div class="card-body">
-                    <div class="card bg-gradient-danger card-img-holder text-white">
-                       <div class="card-body">
-                         <h4 class="font-weight-normal mb-3">Erro, não foi possivel remover esse professor!</h4>
-                       </div>
-                     </div>
-                 </div>
-               </div>';
+       echo '<script>alert("Erro, não foi possivel remover o administrador");location:href="index.php?pagina=lisAdministrador"</script>';
      }
   endif;
 ?>
@@ -76,10 +60,10 @@
                         <?php echo $administrador->email; ?>
                       </td>
                       <td>
-                        <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>
+                        <a class="badge badge-gradient-info" href="index.php?pagina=editAdministrador&administrador=<?php echo $administrador->id; ?>">Editar</a>
                       </td>
                       <td>
-                        <a class="badge badge-gradient-danger" href="index.php?pagina=ediAdministrador&deletar=sim&administrador=<?php echo $administrador->id; ?>">Remover</a>
+                        <a class="badge badge-gradient-danger" href="index.php?pagina=lisAdministrador&deletar=sim&administrador=<?php echo $administrador->id; ?>">Remover</a>
                       </td>
                     </tr>
                    <?php }} ?>
@@ -103,14 +87,14 @@
                     echo	'<span>Página: <a>'.$pg.'</a></span>';
                     for($i = $pg-$links; $i<=$pg-1; $i++){
                         if($i<=0){}else{
-                            echo '<li class="page-item next"><a class="page-link" href="index.php?pagina=ediAdministrador&pg='.$i.'">'.$i.'</a></li>';
+                            echo '<li class="page-item next"><a class="page-link" href="index.php?pagina=lisAdministrador&pg='.$i.'">'.$i.'</a></li>';
                         }
                     }
                     for($i = $pg+1; $i<=$pg+$links; $i++){
                         if($i>$pags){}else{
-                            echo	'<li class="page-item next"><a class="page-link" href="index.php?pagina=ediAdministrador&pg='.$i.'">'.$i.'</a></li>';
+                            echo	'<li class="page-item next"><a class="page-link" href="index.php?pagina=lisAdministrador&pg='.$i.'">'.$i.'</a></li>';
                         }
-                    }echo '<li class="page-item next"><a class="page-link" href="index.php?pagina=ediAdministrador&pg='.$pags.'">Ultima página</a></li>';
+                    }echo '<li class="page-item next"><a class="page-link" href="index.php?pagina=lisAdministrador&pg='.$pags.'">Ultima página</a></li>';
                 ?>
               </li>
               </ul>

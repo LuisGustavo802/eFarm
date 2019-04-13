@@ -9,6 +9,21 @@
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
+    <?php if($usuarioLogado->opCoo == '1') { ?>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#general-pages7" aria-expanded="false" aria-controls="general-pages7">
+        <span class="menu-title">Coordenações</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-library menu-icon"></i>
+      </a>
+      <div class="collapse" id="general-pages7">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadCoordenacao"> Cadastrar Coordenação </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisCoordenacao"> Listar Coordenações </a></li>
+        </ul>
+        </div>
+    </li>
+  <?php } ?>
     <?php if($usuarioLogado->opUne == '1') { ?>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#general-pages1" aria-expanded="false" aria-controls="general-pages1">
@@ -18,8 +33,8 @@
       </a>
       <div class="collapse" id="general-pages1">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Listar Unepes </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Cadastrar Unepe </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadUnepe"> Cadastrar Unepe </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisUnepe"> Listar Unepes </a></li>
         </ul>
         </div>
     </li>
@@ -33,8 +48,8 @@
       </a>
       <div class="collapse" id="general-pages4">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="?pagina=cadAdministrador"> Cadastrar administradores </a></li>
-          <li class="nav-item"> <a class="nav-link" href="?pagina=ediAdministrador"> Editar administradores </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadAdministrador"> Cadastrar Administrador </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisAdministrador"> Listar Administradores </a></li>
         </ul>
         </div>
     </li>
@@ -48,8 +63,8 @@
       </a>
       <div class="collapse" id="general-pages2">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="?pagina=cadProfessor"> Cadastrar professor </a></li>
-          <li class="nav-item"> <a class="nav-link" href="?pagina=ediProfessor"> Listar professores </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadProfessor"> Cadastrar Professor </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisProfessor"> Listar Professores </a></li>
         </ul>
         </div>
     </li>
@@ -63,8 +78,8 @@
       </a>
       <div class="collapse" id="general-pages3">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Cadastrar categoria </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Editar categoria </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadCategoria"> Cadastrar Categoria </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisCategoria"> Listar Categorias </a></li>
         </ul>
         </div>
     </li>
@@ -78,9 +93,9 @@
       </a>
       <div class="collapse" id="general-pages">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="?pagina=cadProdutos"> Cadastrar produto </a></li>
-          <li class="nav-item"> <a class="nav-link" href="?pagina=ediProdutos"> Editar produto </a></li>
-          <li class="nav-item"> <a class="nav-link" href="?pagina=estProdutos"> Gerenciar estoque </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadProdutos"> Cadastrar Produto </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=lisProdutos"> Listar Produtos </a></li>
+          <li class="nav-item"> <a class="nav-link" href="?pagina=estProdutos"> Gerenciar Estoque </a></li>
         </ul>
         </div>
     </li>
@@ -95,7 +110,7 @@
       <div class="collapse" id="general-pages5">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="?pagina=pedidos"> Todos os pedidos </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Solicitação de produto </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Solicitações de produto </a></li>
         </ul>
         </div>
     </li>

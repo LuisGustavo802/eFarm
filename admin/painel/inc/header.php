@@ -19,7 +19,7 @@
     }
     if(isset($_GET['acao']) && $_GET['acao'] == 'sair'):
         if($login->deslogar()){
-              echo '<script>alert("Por favor, preencha o formulário!");location:href="'.PATH.'"</script>';
+          header("Location: ../index.php");
         }
     endif;
  ?>
@@ -48,16 +48,6 @@
         <a class="navbar-brand brand-logo-mini" href="?pagina=home"><img src="images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <div class="search-field d-none d-md-block">
-          <form class="d-flex align-items-center h-100" action="#">
-            <div class="input-group">
-              <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-              </div>
-              <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
-            </div>
-          </form>
-        </div>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

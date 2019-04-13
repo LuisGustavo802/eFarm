@@ -13,9 +13,9 @@
         $status = 'Recusado';
         $btnSts = 'danger';
     }
-    $pegar_cliente = BD::conn()->prepare("SELECT * FROM `tblcdsprof` WHERE id = ?");
-    $pegar_cliente->execute(array($fetchPedido->id_cliente));
-    $dadosCliente  = $pegar_cliente->fetchObject();
+    $pegar_prof = BD::conn()->prepare("SELECT * FROM `tblcdsprof` WHERE id = ?");
+    $pegar_prof->execute(array($fetchPedido->id_prof));
+    $dadosProf  = $pegar_prof->fetchObject();
 ?>
 <div class="main-panel">
   <div class="content-wrapper">
@@ -41,7 +41,7 @@
                  <tbody>
                   <tr>
                     <td>
-                        <?php echo $dadosCliente->nome ?>
+                        <?php echo $dadosProf->nome ?>
                     </td>
                     <td>
                       <label class="badge badge-gradient-<?php echo $btnSts ?>"><?php echo $status ?></label>
@@ -146,7 +146,6 @@
         </div>
       </div>
     </div>
-
 <?php
   if(isset($_POST['acao']) && $_POST['acao'] == 'mudarSts'):
       $status = $_POST['status'];

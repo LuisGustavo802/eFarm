@@ -23,7 +23,7 @@
                               'email' => $emailLog,
                               'senha' => $senhaLog
                             );
-              if($Site->inserir('tabela_clientes', $dados)){
+              if($Site->inserir('tblcdsprof', $dados)){
                   echo  ' <div class="card">
                             <div class="card-body">
                                <div class="card bg-gradient-success card-img-holder text-white">
@@ -57,15 +57,15 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosProd->titulo; ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email:</label>
-              <input type="text" class="form-control" name="emailLog" placeholder="Email" value="<?php echo $dadosProd->valor_anterior; ?>">
+              <input type="text" class="form-control" name="emailLog" placeholder="Email">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Senha:</label>
-              <input type="text" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosProd->valor_atual; ?>">
+              <input type="text" class="form-control" name="senhaLog" placeholder="Senha">
             </div>
             <button type="submit" class="btn btn-gradient-primary mr-2" value="Próximo Passo">Cadastrar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Cadastrar"/>

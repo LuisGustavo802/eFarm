@@ -1,12 +1,18 @@
 <?php
   if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'){
-      $nome     = strip_tags(filter_input(INPUT_POST, 'nome'));
+      $nome = strip_tags(filter_input(INPUT_POST, 'nome'));
       $emailLog = strip_tags(filter_input(INPUT_POST, 'emailLog'));
       $senhaLog = strip_tags(filter_input(INPUT_POST, 'senhaLog'));
       $val = new Validacao();
       $val->set($nome    , 'Nome')->obrigatorio();
       $val->set($emailLog, 'Email de Login')->isEmail();
       $val->set($senhaLog, 'Senha de Login')->obrigatorio();
+      if(isset($_POST['checkCoordenacao']))
+      {
+          $checkCoordenacao = $_POST['checkCoordenacao'][0];
+      }else{
+          $checkCoordenacao = 0;
+      }
       if(isset($_POST['checkUnepe']))
       {
           $checkUnepe = $_POST['checkUnepe'][0];
@@ -56,44 +62,29 @@
   							</div>';
       }else{
           $now = date('Y-m-d');
-          $verificarUsuario = BD::conn()->prepare("SELECT id FROM `tblcdsprof` WHERE email = ?");
+          $verificarUsuario = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE email = ?");
           $verificarUsuario->execute(array($emailLog));
           if($verificarUsuario->rowCount() > 0){
-              echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="'.PATH.'cadastro"</script>';
+              echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="index.php?pagina=cadAdministrador"</script>';
           }else{
               $dados = array(
-                              'nome'      => $nome,
-                              'email_log' => $emailLog,
-                              'senha_log' => $senhaLog,
-                              'data_log'  => $now,
-                              'opUne'     => $checkUnepe,
-                              'opAdm'     => $checkAdministrador,
-                              'opProf'    => $checkProfessor,
-                              'opCat'     => $checkCategoria,
-                              'opProd'    => $checkProduto,
-                              'opPed'     => $checkPedido,
-                              'opRel'     => $checkRelatorio
+                              'nome'   => $nome,
+                              'email'  => $emailLog,
+                              'senha'  => $senhaLog,
+                              'data'   => $now,
+                              'opCoo'  => $checkCoordenacao,
+                              'opUne'  => $checkUnepe,
+                              'opAdm'  => $checkAdministrador,
+                              'opProf' => $checkProfessor,
+                              'opCat'  => $checkCategoria,
+                              'opProd' => $checkProduto,
+                              'opPed'  => $checkPedido,
+                              'opRel'  => $checkRelatorio
                             );
               if($Site->inserir('tblcdsadm', $dados)){
-                  echo  ' <div class="card">
-                            <div class="card-body">
-                               <div class="card bg-gradient-success card-img-holder text-white">
-                                  <div class="card-body">
-                                    <h4 class="font-weight-normal mb-3">Ok, administrador cadastrado com sucesso!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>';
+                 echo '<script>alert("Ok, administrador cadastrado com sucesso!");location:href="index.php?pagina=lisAdministrador"</script>';
               }else{
-                  echo  ' <div class="card">
-                            <div class="card-body">
-                               <div class="card bg-gradient-danger card-img-holder text-white">
-                                  <div class="card-body">
-                                    <h4 class="font-weight-normal mb-3">Erro, não foi possivel cadastrar o administrador!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>';
+                 echo '<script>alert("Erro, não foi possivel cadastrar o administrador");location:href="index.php?pagina=lisAdministrador"</script>';
               }
           }
       }
@@ -108,21 +99,24 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosProd->titulo; ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email:</label>
-              <input type="text" class="form-control" name="emailLog" placeholder="Email" value="<?php echo $dadosProd->valor_anterior; ?>">
+              <input type="text" class="form-control" name="emailLog" placeholder="Email">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Senha:</label>
-              <input type="text" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosProd->valor_atual; ?>">
+              <input type="text" class="form-control" name="senhaLog" placeholder="Senha">
             </div>
             <label class="card-title mt-5">Liberação de menu</label>
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
+                    <th>
+                      Menu Coordenações
+                    </th>
                     <th>
                       Menu Unepes
                     </th>
@@ -148,6 +142,13 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkCoordenacao[]" value="1">Permitir
+                        </label>
+                      </div>
+                    </td>
                     <td>
                       <div class="form-check">
                         <label class="form-check-label">

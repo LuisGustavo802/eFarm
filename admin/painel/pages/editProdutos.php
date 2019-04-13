@@ -16,22 +16,22 @@
          $qtdEstoque  = strip_tags(filter_input(INPUT_POST, 'qtdEstoque'));
          if($img_padrao['error'] == '4'){
              if($categoria == ''){
-                 $update = BD::conn()->prepare("UPDATE `tabela_produtos` SET titulo = ?, valor_anterior = ?, valor_atual = ?,
+                 $update = BD::conn()->prepare("UPDATE `tblcdsprod` SET titulo = ?, valor_anterior = ?, valor_atual = ?,
                  descricao = ?, peso = ?, estoque = ? WHERE id = ?");
                  $dados = array($titulo, $valAnterior, $valAtual, $descricao, $peso, $qtdEstoque, $idProduto);
                  if($update->execute($dados)){
-                     echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=ediProdutos"</script>';
+                     echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=lisProdutos"</script>';
                  }else{
-                    echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=ediProdutos"</script>';
+                    echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=lisProdutos"</script>';
                  }
              }else{
-                 $update = BD::conn()->prepare("UPDATE `tabela_produtos` SET titulo = ?, categoria = ?, valor_anterior = ?, valor_atual = ?,
+                 $update = BD::conn()->prepare("UPDATE `tblcdsprod` SET titulo = ?, categoria = ?, valor_anterior = ?, valor_atual = ?,
                  descricao = ?, peso = ?, estoque = ? WHERE id = ?");
                  $dados = array($titulo, $categoria, $valAnterior, $valAtual, $descricao, $peso, $qtdEstoque, $idProduto);
                  if($update->execute($dados)){
-                     echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=ediProdutos"</script>';
+                     echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=lisProdutos"</script>';
                  }else{
-                    echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=ediProdutos"</script>';
+                    echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=lisProdutos"</script>';
                  }
              }
          }else{
@@ -39,25 +39,25 @@
                unlink('../../produtos/'.$dadosProd->img_padrao);
                $nomeImg = md5(uniqid(rand(), true)).$img_padrao['name'];
                $Site->upload($img_padrao['tmp_name'], $img_padrao['name'], $nomeImg, '350', '../../img/product/');
-               $update = BD::conn()->prepare("UPDATE `tabela_produtos` SET img_padrao = ?, titulo = ?, valor_anterior = ?, valor_atual = ?,
+               $update = BD::conn()->prepare("UPDATE `tblcdsprod` SET img_padrao = ?, titulo = ?, valor_anterior = ?, valor_atual = ?,
                descricao = ?, peso = ?, estoque = ? WHERE id = ?");
                $dados = array($nomeImg, $titulo, $valAnterior, $valAtual, $descricao, $peso, $qtdEstoque, $idProduto);
                if($update->execute($dados)){
-                   echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=ediProdutos"</script>';
+                   echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=lisProdutos"</script>';
                }else{
-                  echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=ediProdutos"</script>';
+                  echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=lisProdutos"</script>';
                }
            }else{
                unlink('../../produtos/'.$dadosProd->img_padrao);
                $nomeImg = md5(uniqid(rand(), true)).$img_padrao['name'];
                $Site->upload($img_padrao['tmp_name'], $img_padrao['name'], $nomeImg, '350', '../../img/product/');
-               $update = BD::conn()->prepare("UPDATE `tabela_produtos` SET img_padrao = ?, titulo = ?, categoria = ?, valor_anterior = ?, valor_atual = ?,
+               $update = BD::conn()->prepare("UPDATE `tblcdsprod` SET img_padrao = ?, titulo = ?, categoria = ?, valor_anterior = ?, valor_atual = ?,
                descricao = ?, peso = ?, estoque = ? WHERE id = ?");
                $dados = array($nomeImg, $titulo, $categoria, $valAnterior, $valAtual, $descricao, $peso, $qtdEstoque, $idProduto);
                if($update->execute($dados)){
-                   echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=ediProdutos"</script>';
+                   echo '<script>alert("Produto editado corretamente!");location.href="index.php?pagina=lisProdutos"</script>';
                }else{
-                  echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=ediProdutos"</script>';
+                  echo '<script>alert("Não foi possivel editar o produto!");location.href="index.php?pagina=lisProdutos"</script>';
                }
            }
          }

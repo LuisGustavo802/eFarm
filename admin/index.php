@@ -24,18 +24,14 @@
          $email = strip_tags(filter_input(INPUT_POST, 'email'));
          $senha = strip_tags(filter_input(INPUT_POST, 'senha'));
          if($email == '' || $senha == ''){
-						echo '<div class="alert alert-warning" role="alert">
-							       <strong>Aviso!</strong> usuário não foi encontrado.
-						     </div>';
+						echo '<script>alert("Não foi possivel logar com esse administrador!");location:href="#"</script>';
          }else{
               $login->setEmail($email);
               $login->setSenha($senha);
               if($login->logar()){
-                  header("Location: painel/index.php");
+                header("Location: painel/index.php");
               }else{
-                echo '<div class="alert alert-warning" role="alert">
-                         <strong>Aviso!</strong> usuário não foi encontrado.
-                     </div>';
+                echo '<script>alert("Não foi possivel logar com esse administrador!");location:href="#"</script>';
               }
          }
     endif;
@@ -64,8 +60,7 @@
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
                     <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Keep me signed in
+                      Painel Administrativo
                     </label>
                   </div>
                   <a href="#" class="auth-link text-black">Forgot password?</a>

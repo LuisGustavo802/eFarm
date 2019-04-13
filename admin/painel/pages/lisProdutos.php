@@ -1,18 +1,18 @@
 <?php
-  if(isset($_GET['deletar']) && $_GET['deletar'] == 'sim'):
-      $idProduto = (int)$_GET['produto'];
-      $pegar_dados_produto = BD::conn()->prepare("SELECT img_padrao FROM `tblcdsprod` WHERE id = ?");
-      $pegar_dados_produto->execute(array($idProduto));
-      $dadosProd = $pegar_dados_produto->fetchObject();
-      if(unlink('../../img/product/'.$dadosProd->img_padrao)){
-         $deletar_produto = BD::conn()->prepare("DELETE FROM `tblcdsprod` WHERE id = ?");
-         if($deletar_produto->execute(array($idProduto))){
-            echo '<script>alert("Produto excluido corretamente!");location.href="index.php?pagina=ediProdutos"</script>';
-         }else{
-            echo '<script>alert("Não foi possivel excluir esse produto!");location.href="index.php?pagina=ediProdutos"</script>';
-         }
-      }
-  endif;
+if(isset($_GET['deletar']) && $_GET['deletar'] == 'sim'):
+    $idProduto = (int)$_GET['produto'];
+    $pegar_dados_produto = BD::conn()->prepare("SELECT img_padrao FROM `tblcdsprod` WHERE id = ?");
+    $pegar_dados_produto->execute(array($idProduto));
+    $dadosProd = $pegar_dados_produto->fetchObject();
+    if(unlink('../../img/product/'.$dadosProd->img_padrao)){
+       $deletar_produto = BD::conn()->prepare("DELETE FROM `tblcdsprod` WHERE id = ?");
+       if($deletar_produto->execute(array($idProduto))){
+          echo '<script>alert("Produto excluido corretamente!");location.href="index.php?pagina=lisProdutos"</script>';
+       }else{
+          echo '<script>alert("Não foi possivel excluir esse produto!");location.href="index.php?pagina=lisProdutos"</script>';
+       }
+    }
+endif;
 ?>
 <div class="main-panel">
   <div class="content-wrapper">
@@ -20,7 +20,7 @@
       <div class="col-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Editar produtos <?php echo $id_pedido ?></h4>
+            <h4 class="card-title">Listar Produtos <?php echo $id_pedido ?></h4>
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -68,7 +68,7 @@
                         <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>
                       </td>
                       <td>
-                        <a class="badge badge-gradient-danger" href="index.php?pagina=ediProdutos&deletar=sim&produto=<?php echo $produto->id; ?>">Remover</a>
+                        <a class="badge badge-gradient-danger" href="index.php?pagina=editProdutos&deletar=sim&produto=<?php echo $produto->id; ?>">Remover</a>
                       </td>
                     </tr>
                    <?php }} ?>
