@@ -56,6 +56,18 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+#box-suport {
+position: fixed;
+z-index: 1;
+width: 80px;
+text-align: center;
+bottom: 280px;
+right: 10px;
+}
+#box-suport img {
+width: 80%;
+max-width: 150px;
+}
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -10250,6 +10262,302 @@ pre code {
 .table-responsive > .table-bordered {
   border: 0;
 }
+
+.tablerel {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.tablerel th,
+.tablerel td {
+  padding: 0.9375rem;
+  vertical-align: top;
+  border-top: 1px solid #ebedf2;
+}
+
+.tablerel thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ebedf2;
+}
+
+.tablerel tbody + tbody {
+  border-top: 2px solid #ebedf2;
+}
+
+.tablerel .tablerel {
+  background-color: #fff;
+}
+
+.tablerel-sm th,
+.tablerel-sm td {
+  padding: 0.3rem;
+}
+
+.tablerel-bordered {
+  border: 1px solid #ebedf2;
+}
+
+.tablerel-bordered th,
+.tablerel-bordered td {
+  border: 1px solid #ebedf2;
+}
+
+.tablerel-bordered thead th,
+.tablerel-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.tablerel-borderless th,
+.tablerel-borderless td,
+.tablerel-borderless thead th,
+.tablerel-borderless tbody + tbody {
+  border: 0;
+}
+
+.tablerel-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2edf3;
+}
+
+.tablerel-hover tbody tr:hover {
+  background-color: #f2edf3;
+}
+
+.tablerel-primary,
+.tablerel-primary > th,
+.tablerel-primary > td {
+  background-color: #ebd6ff;
+}
+
+.tablerel-hover .tablerel-primary:hover {
+  background-color: #dfbdff;
+}
+
+.tablerel-hover .tablerel-primary:hover > td,
+.tablerel-hover .tablerel-primary:hover > th {
+  background-color: #dfbdff;
+}
+
+.tablerel-secondary,
+.tablerel-secondary > th,
+.tablerel-secondary > td {
+  background-color: #f4f4f4;
+}
+
+.tablerel-hover .tablerel-secondary:hover {
+  background-color: #e7e7e7;
+}
+
+.tablerel-hover .tablerel-secondary:hover > td,
+.tablerel-hover .tablerel-secondary:hover > th {
+  background-color: #e7e7e7;
+}
+
+.tablerel-success,
+.tablerel-success > th,
+.tablerel-success > td {
+  background-color: #bff2ea;
+}
+
+.tablerel-hover .tablerel-success:hover {
+  background-color: #aaeee3;
+}
+
+.tablerel-hover .tablerel-success:hover > td,
+.tablerel-hover .tablerel-success:hover > th {
+  background-color: #aaeee3;
+}
+
+.tablerel-info,
+.tablerel-info > th,
+.tablerel-info > td {
+  background-color: #bfdef7;
+}
+
+.tablerel-hover .tablerel-info:hover {
+  background-color: #a8d2f4;
+}
+
+.tablerel-hover .tablerel-info:hover > td,
+.tablerel-hover .tablerel-info:hover > th {
+  background-color: #a8d2f4;
+}
+
+.tablerel-warning,
+.tablerel-warning > th,
+.tablerel-warning > td {
+  background-color: #fff4bd;
+}
+
+.tablerel-hover .tablerel-warning:hover {
+  background-color: #fff0a4;
+}
+
+.tablerel-hover .tablerel-warning:hover > td,
+.tablerel-hover .tablerel-warning:hover > th {
+  background-color: #fff0a4;
+}
+
+.tablerel-danger,
+.tablerel-danger > th,
+.tablerel-danger > td {
+  background-color: #ffdae2;
+}
+
+.tablerel-hover .tablerel-danger:hover {
+  background-color: #ffc1ce;
+}
+
+.tablerel-hover .tablerel-danger:hover > td,
+.tablerel-hover .tablerel-danger:hover > th {
+  background-color: #ffc1ce;
+}
+
+.tablerel-light,
+.tablerel-light > th,
+.tablerel-light > td {
+  background-color: #fdfdfe;
+}
+
+.tablerel-hover .tablerel-light:hover {
+  background-color: #ececf6;
+}
+
+.tablerel-hover .tablerel-light:hover > td,
+.tablerel-hover .tablerel-light:hover > th {
+  background-color: #ececf6;
+}
+
+.tablerel-dark,
+.tablerel-dark > th,
+.tablerel-dark > td {
+  background-color: #c9cdd1;
+}
+
+.tablerel-hover .tablerel-dark:hover {
+  background-color: #bbc0c5;
+}
+
+.tablerel-hover .tablerel-dark:hover > td,
+.tablerel-hover .tablerel-dark:hover > th {
+  background-color: #bbc0c5;
+}
+
+.tablerel-active,
+.tablerel-active > th,
+.tablerel-active > td {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.tablerel-hover .tablerel-active:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.tablerel-hover .tablerel-active:hover > td,
+.tablerel-hover .tablerel-active:hover > th {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.tablerel .thead-dark th {
+  color: #fff;
+  background-color: #212529;
+  border-color: #32383e;
+}
+
+.tablerel .thead-light th {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #ebedf2;
+}
+
+.tablerel-dark {
+  color: #fff;
+  background-color: #212529;
+}
+
+.tablerel-dark th,
+.tablerel-dark td,
+.tablerel-dark thead th {
+  border-color: #32383e;
+}
+
+.tablerel-dark.tablerel-bordered {
+  border: 0;
+}
+
+.tablerel-dark.tablerel-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tablerel-dark.tablerel-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+@media (max-width: 575.98px) {
+  .tablerel-responsive-sm {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .tablerel-responsive-sm > .tablerel-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tablerel-responsive-md {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .tablerel-responsive-md > .tablerel-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .tablerel-responsive-lg {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .tablerel-responsive-lg > .tablerel-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .tablerel-responsive-xl {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .tablerel-responsive-xl > .tablerel-bordered {
+    border: 0;
+  }
+}
+
+.tablerel-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.tablerel-responsive > .tablerel-bordered {
+  border: 0;
+}
+
 
 .form-control {
   display: block;

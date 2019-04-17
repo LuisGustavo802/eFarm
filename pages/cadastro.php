@@ -20,10 +20,13 @@
             if($verificarUsuario->rowCount() > 0){
                 echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="'.PATH.'cadastro"</script>';
             }else{
+                $now = date('Y-m-d');
                 $dados = array(
-                                'nome'      => $nome,
-                                'email' => $emailLog,
-                                'senha' => $senhaLog
+                                'nome'         => $nome,
+                                'email'        => $emailLog,
+                                'senha'        => $senhaLog,
+                                'data'         => $now,
+                                'tipo_usuario' => 0
                               );
                 if($Site->inserir('tblcdsprof', $dados)){
                     echo	'<div class="alert alert-success" role="alert">
@@ -61,16 +64,16 @@
                                         <input type="text" class="form-control" name="nome"  required="required">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email de Login<span>*</span></label>
+                                        <label for="email">Email <span>*</span></label>
                                         <input type="email" class="form-control" name="emailLog"  required="required">
                                     </div>
                                     <div class="form-group">
-                                        <label for="pwd">Senha de Login <span>*</span></label>
+                                        <label for="pwd">Senha <span>*</span></label>
                                         <input type="password" class="form-control" name="senhaLog"  required="required">
                                     </div>
                                     <h3>* Campos requiridos</h3>
                                     <div class="forgot_area">
-                                        <button type="submit" class="btn update_btn btn-default" name="acao" value="cadProf">Entrar</button>
+                                        <button type="submit" class="btn update_btn btn-default" name="acao" value="cadProf">Cadastrar</button>
                                         <h4>Esqueceu sua senha ?</h4>
                                     </div>
                                 </form>

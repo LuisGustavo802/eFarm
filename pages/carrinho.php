@@ -37,10 +37,12 @@
 	if(isset($_POST['atualizarUnepe'])){
 			$_SESSION['unepe'] = $_POST['unepe'];
 			if($_POST['unepe'] != "0"){
+				$atualizarUnepe = 1;
 				echo	'<div class="alert alert-success" role="alert">
 								<strong>Ok!</strong> UNEPE selecionada.
 							</div>';
 			}else{
+				$atualizarUnepe = 0;
 				echo	'<div class="alert alert-danger" role="alert">
 								<strong>Erro!</strong> UNEPE não foi selecionada.
 							</div>';
@@ -123,7 +125,7 @@
 												<?php } ?>
 												</select>
 												<h3 class="cart_single_title"></h3>
-                        <button type="submit" class="btn btn-primary subs_btn"  value="" id="update" name="atualizarUnepe">ATUALIZE A UNEPE</button>
+                        <button type="submit" class="btn btn-primary subs_btn"  value="" id="update" name="atualizarUnepe">SELECIONE A UNEPE</button>
 											</div>
                     </div>
                     </form>
@@ -136,7 +138,14 @@
                             </ul>
                         </div>
                         <a type="submit" class="btn btn-primary update_btn" href="<?php echo PATH.'loja' ?>"> VOLTAR A LOJA</a>
-                        <a type="submit" class="btn btn-primary checkout_btn" href="<?php echo PATH.'verificar' ?>">FINALIZAR O PEDIDO</a>
+												<?php if(isset($_POST['atualizarUnepe']) && $atualizarUnepe == 1){  ?>
+														  <a type="submit" class="btn btn-primary checkout_btn" href="<?php echo PATH.'verificar' ?>">FINALIZAR O PEDIDO</a>
+												<?php }else{
+													echo	'<div class="alert alert-warning mt-3" role="alert">
+																	<strong>Aviso!</strong> Selecione a unepe para finalizar o pedido.
+																</div>';
+												?>
+											  <?php } ?>
 												<?php 			$_SESSION['total_compra'] = number_format($total, 2,',','.');
 																		$_SESSION['total_compra'] = str_replace(",",".", $_SESSION['total_compra']);  ?>
                     </div>

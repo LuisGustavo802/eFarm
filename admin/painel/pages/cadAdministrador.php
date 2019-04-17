@@ -19,6 +19,12 @@
       }else{
           $checkUnepe = 0;
       }
+      if(isset($_POST['checkFornecedor']))
+      {
+          $checkFornecedor = $_POST['checkFornecedor'][0];
+      }else{
+          $checkFornecedor = 0;
+      }
       if(isset($_POST['checkAdministrador']))
       {
           $checkAdministrador = $_POST['checkAdministrador'][0];
@@ -74,6 +80,7 @@
                               'data'   => $now,
                               'opCoo'  => $checkCoordenacao,
                               'opUne'  => $checkUnepe,
+                              'opFor'  => $checkFornecedor,
                               'opAdm'  => $checkAdministrador,
                               'opProf' => $checkProfessor,
                               'opCat'  => $checkCategoria,
@@ -121,6 +128,9 @@
                       Menu Unepes
                     </th>
                     <th>
+                      Menu Fornecedores
+                    </th>
+                    <th>
                       Menu Administradores
                     </th>
                     <th>
@@ -153,6 +163,13 @@
                       <div class="form-check">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1">Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1">Permitir
                         </label>
                       </div>
                     </td>

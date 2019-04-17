@@ -49,9 +49,9 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
                         );
         if($Site->inserir('tblcdsprod', $dados)){
            $_SESSION['ultimoId'] = BD::conn()->lastInsertId();
-           echo '<script>alert("Ok, produto cadastrado com sucesso!");location:href="index.php?pagina=lisProdutos"</script>'
+           echo '<script>alert("Ok, produto cadastrado com sucesso!");location:href="index.php?pagina=lisProdutos"</script>';
         }else{
-           echo '<script>alert("Erro, não foi possível cadastrar esse produto!");location:href="index.php?pagina=lisProdutos"</script>'
+           echo '<script>alert("Erro, não foi possível cadastrar esse produto!");location:href="index.php?pagina=lisProdutos"</script>';
         }
      }
 endif;
@@ -84,7 +84,7 @@ endif;
                       $pegar_categorias->execute();
                       while($cat = $pegar_categorias->fetchObject()){
                   ?>
-                  <option value="<?php echo $cat->slug; ?>" selected="selected"><?php echo $cat->titulo; ?></option>
+                  <option value="<?php echo $cat->slug; ?>"><?php echo $cat->titulo; ?></option>
                 <?php } ?>
                 </select>
             </div>

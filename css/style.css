@@ -887,7 +887,7 @@ i:before {
 
 .carousel_menu_inner .navbar .navbar-nav.justify-content-end li a {
   font-size: 20px;
-  border: 1px solid #159999;
+  border: 1px solid #0e3c40;
   color: #333333;
   text-align: center;
   display: inline-block;
@@ -1037,7 +1037,7 @@ i:before {
 /* Home Box menu css
 ============================================================================================ */
 .black_top_header {
-  background: #159999;
+  background: #0e3c40;
 }
 
 .black_top_header .selector {
@@ -2370,7 +2370,7 @@ i:before {
 }
 
 .advanced_search_area {
-  border: 1px solid #159999;
+  border: 1px solid #0e3c40;
   margin-bottom: 20px;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -2386,7 +2386,7 @@ i:before {
   max-width: 25%;
   width: 100% !important;
   text-align: center;
-  background-color: #159999;
+  background-color: #0e3c40;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle {
@@ -2400,7 +2400,7 @@ i:before {
   outline: none !important;
   position: relative;
   border-radius: 0px;
-  background-color: : #159999;
+  background-color: : #0e3c40;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle span {
@@ -2410,14 +2410,14 @@ i:before {
   color: white;
   text-transform: uppercase;
   text-align: center !important;
-  background:  #159999;
+  background:  #0e3c40;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle:after {
   content: "\33";
   font-family: 'ElegantIcons';
   font-size: 14px;
-  color: #159999;
+  color: #0e3c40;
   margin: 0px;
   width: auto;
   height: auto;
@@ -2495,7 +2495,7 @@ i:before {
 }
 
 .advanced_search_area .input-group .input-group-btn .btn-secondary {
-  background: #159999;
+  background: #0e3c40;
   border-radius: 0px;
   outline: none !important;
   -webkit-box-shadow: none !important;
@@ -5621,7 +5621,7 @@ i:before {
 }
 
 .l_title {
-  background: #159999;
+  background: #0e3c40;
   padding: 20px 0px 20px 30px;
 }
 
@@ -6905,11 +6905,11 @@ i:before {
 }
 
 .imgborder{
-    border-bottom: 1px solid #159999;
+    border-bottom: 1px solid #0e3c40;
 }
 
 .footer_copyright{
-  background-color: #159999;
+  background-color: #0e3c40;
 }
 
 .footer_copyright h5{

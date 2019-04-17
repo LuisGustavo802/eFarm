@@ -7,6 +7,12 @@
       $val->set($nome    , 'Nome')->obrigatorio();
       $val->set($emailLog, 'Email de Login')->isEmail();
       $val->set($senhaLog, 'Senha de Login')->obrigatorio();
+      if(isset($_POST['checkAcessoAdm']))
+      {
+          $checkAcessoAdm = $_POST['checkAcessoAdm'][0];
+      }else{
+          $checkAcessoAdm = 0;
+      }
       if(!$val->validar()){
           $erros = $val->getErro();
           echo  '<div class="alert alert-danger" role="alert">
@@ -18,31 +24,18 @@
           if($verificarUsuario->rowCount() > 0){
               echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="'.PATH.'cadastro"</script>';
           }else{
+              $now = date('Y-m-d');
               $dados = array(
-                              'nome'  => $nome,
-                              'email' => $emailLog,
-                              'senha' => $senhaLog
+                              'nome'         => $nome,
+                              'email'        => $emailLog,
+                              'senha'        => $senhaLog,
+                              'data'         => $now,
+                              'tipo_usuario' => $checkAcessoAdm
                             );
               if($Site->inserir('tblcdsprof', $dados)){
-                  echo  ' <div class="card">
-                            <div class="card-body">
-                               <div class="card bg-gradient-success card-img-holder text-white">
-                                  <div class="card-body">
-                                    <h4 class="font-weight-normal mb-3">Ok, professor cadastrado com sucesso!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>';
+                  echo '<script>alert("Ok, professor cadastrador com sucesso!");location:href="?pagina=lisProfessor"</script>';
               }else{
-                  echo  ' <div class="card">
-                            <div class="card-body">
-                               <div class="card bg-gradient-danger card-img-holder text-white">
-                                  <div class="card-body">
-                                    <h4 class="font-weight-normal mb-3">Erro, não foi possivel cadastrar o professor!</h4>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>';
+                  echo '<script>alert("Erro, Não foi possivel cadastrar esse professor!");location:href="?pagina=lisProfessor"</script>';
               }
           }
       }
@@ -67,7 +60,13 @@
               <label for="exampleInputEmail3">Senha:</label>
               <input type="text" class="form-control" name="senhaLog" placeholder="Senha">
             </div>
-            <button type="submit" class="btn btn-gradient-primary mr-2" value="Próximo Passo">Cadastrar</button>
+            <label class="card-title">Liberação da administração</label>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="checkAcessoAdm[]" value="1">Permitir
+              </label>
+            </div>
+            <button type="submit" class="btn btn-gradient-primary mr-2 mt-5" value="Próximo Passo">Cadastrar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Cadastrar"/>
           </form>
         </div>

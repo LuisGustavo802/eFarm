@@ -58,10 +58,12 @@
                       <?php if ($produto->estoque >= 0){ ?>
                       <td class="estpositivo">
                           <?php echo $produto->estoque; ?>
+                          <i class="mdi mdi-arrow-up">
                       </td>
                       <?php }else{ ?>
                       <td class="estnegativo">
                         <?php echo $produto->estoque; ?>
+                        <i class="mdi mdi-arrow-down">
                       </td>
                     <?php }?>
                       <td>

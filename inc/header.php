@@ -49,7 +49,7 @@
                     <ul class="account_list">
                         <?php if($login->isLogado()){ ?>
                             <?php if($usuarioLogado->tipo_usuario == 1){ ?>
-                            <li><a href="#">Painel administrativo |</a></li>
+                            <li><a href="<?php echo PATH.'admin' ?>">Painel administrativo |</a></li>
                             <?php }	?>
                             <li><a href="#"><?php echo $usuarioLogado->nome; ?></a></li>
                             <li><a href="&acao=sair">Sair</a></li>
@@ -75,7 +75,7 @@
                     </ul>
                     <ul class="navbar-nav justify-content-end">
                         <?php if($login->isLogado()){ ?>
-                          <li class="user_icon"><a href="<?php echo PATH.'admUser' ?>"><i class="icon-user icons"></i></a></li>
+                          <li class="user_icon"><a href="<?php echo PATH.'admCliente' ?>"><i class="icon-user icons"></i></a></li>
                         <?php }else{	?>
                             <li class="user_icon"><a href="<?php echo PATH.'verificar' ?>"><i class="icon-user icons"></i></a></li>
                         <?php }	?>

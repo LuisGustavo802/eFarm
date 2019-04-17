@@ -257,6 +257,15 @@
 
        }
 
+       function QtdProdutosRel($idproduto){
+         $regSQL = "SELECT `qtd` FROM `tblmvmprodped` WHERE `id_produto` = '$pegar_produtos'";
+         $executar_reg = self::conn()->prepare($regSQL);
+         $executar_reg->execute();
+         if($executar_reg->rowCount()==0){}else{
+             $qtdReg = $executar_reg->rowCount();
+             return $qtdReg;
+         }
+       }
         /* CATEGORIA E SUBCATEGORIA
         public function getMenu(){
             $pegar_categorias = "SELECT * FROM `tabela_categorias` ORDER BY id ASC";

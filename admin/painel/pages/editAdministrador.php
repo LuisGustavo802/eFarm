@@ -23,6 +23,12 @@
       }else{
           $checkUnepe = 0;
       }
+      if(isset($_POST['checkFornecedor']))
+      {
+          $checkFornecedor = $_POST['checkFornecedor'][0];
+      }else{
+          $checkFornecedor = 0;
+      }
       if(isset($_POST['checkAdministrador']))
       {
           $checkAdministrador = $_POST['checkAdministrador'][0];
@@ -65,16 +71,17 @@
   								<strong>'.$erros[0].'</strong>
   							</div>';
       }else{
-          $verificarAdm = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE nome = ? and email = ? and senha = ? and opCoo = ? and opUne = ? and opAdm = ? and
+          $data = date('Y-m-d');
+          $verificarAdm = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE nome = ? and email = ? and senha = ? and data = ? and opCoo = ? and opUne = ? and opFor = ? and opAdm = ? and
                                               opProf = ? and opCat = ? and opProd = ? and opPed = ? and opRel = ?");
-          $verificarAdm->execute(array($nome,$emailLog,$senhaLog,$checkCoordenacao,$checkUnepe,$checkAdministrador,$checkProfessor,$checkCategoria,
+          $verificarAdm->execute(array($nome,$emailLog,$senhaLog,$data,$checkCoordenacao,$checkUnepe,$checkFornecedor,$checkAdministrador,$checkProfessor,$checkCategoria,
                                        $checkProduto,$checkPedido,$checkRelatorio));
           if($verificarAdm->rowCount() > 0){
               echo '<script>alert("Não é possivel editar sem alguma alteração!");location:href="index.php?pagina=lisAdministrador"</script>';
           }else{
-              $update = BD::conn()->prepare("UPDATE `tblcdsadm` SET nome = ? , email = ? , senha = ? , opCoo = ? , opUne = ? , opAdm = ?,
+              $update = BD::conn()->prepare("UPDATE `tblcdsadm` SET nome = ? , email = ? , senha = ? , data = ? , opCoo = ? , opUne = ? , opFor = ? ,opAdm = ?,
                                             opProf = ? , opCat = ? , opProd = ? , opPed = ? , opRel = ? WHERE id = ?");
-              $dados = array($nome,$emailLog,$senhaLog,$checkCoordenacao,$checkUnepe,$checkAdministrador,$checkProfessor,$checkCategoria,
+              $dados = array($nome,$emailLog,$senhaLog,$data,$checkCoordenacao,$checkUnepe,$checkFornecedor,$checkAdministrador,$checkProfessor,$checkCategoria,
                                             $checkProduto,$checkPedido,$checkRelatorio,$idAdministrador);
               if($update->execute($dados)){
                  header("Location: index.php?pagina=lisAdministrador");
@@ -116,6 +123,9 @@
                       Menu Unepes
                     </th>
                     <th>
+                      Menu Fornecedores
+                    </th>
+                    <th>
                       Menu Administradores
                     </th>
                     <th>
@@ -144,6 +154,9 @@
                       }
                       if ($dadosAdm->opUne == 1){
                           $checkUne = 'checked';
+                      }
+                      if ($dadosAdm->opFor == 1){
+                          $checkFor = 'checked';
                       }
                       if ($dadosAdm->opAdm == 1){
                           $checkAdm = 'checked';
@@ -174,6 +187,13 @@
                       <div class="form-check">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1" <?php echo $checkUne ?>>Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1" <?php echo $checkFor ?>>Permitir
                         </label>
                       </div>
                     </td>
