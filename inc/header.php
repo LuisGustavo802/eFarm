@@ -54,9 +54,9 @@
                             <li><a href="#"><?php echo $usuarioLogado->nome; ?></a></li>
                             <li><a href="&acao=sair">Sair</a></li>
                         <?php }else{	?>
-                          <li><a href="#">CADASTRAR-SE</a></li>
+                          <li><a href="<?php echo PATH.'cadastro' ?>">CADASTRAR-SE</a></li>
                           <li><a href="#">|</a></li>
-                          <li><a href="#">ENTRAR</a></li>
+                          <li><a href="<?php echo PATH.'login' ?>">ENTRAR</a></li>
                         <?php }	?>
                     </ul>
                 </div>

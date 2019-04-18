@@ -19,7 +19,6 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
      $validacao->set($categoria, 'Categoria')->obrigatorio();
      $validacao->set($valAtual, 'Valor Atual')->obrigatorio();
      $validacao->set($descricao, 'Descrição')->obrigatorio();
-     $validacao->set($peso, 'Peso')->obrigatorio();
      $validacao->set($qtdEstoque, 'Quantidade em estoque')->obrigatorio();
      if(!$validacao->validar()){
         $erro = $validacao->getErro();
@@ -67,7 +66,7 @@ endif;
               <label>Imagem Padrão:</label>
               <div class="input-group col-xs-12">
                 <span class="input-group-append">
-                  <input class="file-upload-browse btn btn-gradient-primary" type="file" name="img_padrao" value="Procurar"></input>
+                  <input class="file-upload-browse btn btn-gradient-primary" type="file" name="img_padrao" value="Procurar">
                 </span>
               </div>
             </div>
@@ -84,7 +83,7 @@ endif;
                       $pegar_categorias->execute();
                       while($cat = $pegar_categorias->fetchObject()){
                   ?>
-                  <option value="<?php echo $cat->slug; ?>"><?php echo $cat->titulo; ?></option>
+                  <option value="<?php echo $cat->titulo; ?>"><?php echo $cat->titulo; ?></option>
                 <?php } ?>
                 </select>
             </div>

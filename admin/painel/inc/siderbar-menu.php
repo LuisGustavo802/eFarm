@@ -79,7 +79,7 @@
       <div class="collapse" id="general-pages5">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="?pagina=pedidos"> Todos os pedidos </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Solicitações de produto </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Pedidos de produto </a></li>
         </ul>
         </div>
     </li>

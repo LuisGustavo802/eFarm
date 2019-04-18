@@ -14,6 +14,11 @@
          $descricao   = htmlentities($_POST['descricao'], ENT_QUOTES);
          $peso        = strip_tags(filter_input(INPUT_POST, 'peso'));
          $qtdEstoque  = strip_tags(filter_input(INPUT_POST, 'qtdEstoque'));
+         $validacao->set($titulo, 'Titulo')->obrigatorio();
+         $validacao->set($categoria, 'Categoria')->obrigatorio();
+         $validacao->set($valAtual, 'Valor Atual')->obrigatorio();
+         $validacao->set($descricao, 'Descrição')->obrigatorio();
+         $validacao->set($qtdEstoque, 'Quantidade em estoque')->obrigatorio();
          if($img_padrao['error'] == '4'){
              if($categoria == ''){
                  $update = BD::conn()->prepare("UPDATE `tblcdsprod` SET titulo = ?, valor_anterior = ?, valor_atual = ?,
