@@ -189,8 +189,8 @@ i:before {
   background: #d91522;
   position: absolute;
   left: 0px;
-  bottom: 0px;
 }
+bottom: 0px;
 
 .single_c_title {
   text-align: center;
@@ -887,7 +887,7 @@ i:before {
 
 .carousel_menu_inner .navbar .navbar-nav.justify-content-end li a {
   font-size: 20px;
-  border: 1px solid #0e3c40;
+  border: 1px solid #159999;
   color: #333333;
   text-align: center;
   display: inline-block;
@@ -1037,7 +1037,7 @@ i:before {
 /* Home Box menu css
 ============================================================================================ */
 .black_top_header {
-  background: #0e3c40;
+  background: #159999;
 }
 
 .black_top_header .selector {
@@ -2370,8 +2370,7 @@ i:before {
 }
 
 .advanced_search_area {
-  border: 1px solid #0e3c40;
-  margin-bottom: 20px;
+  border: 1px solid #159999;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   display: -webkit-box;
@@ -2386,7 +2385,7 @@ i:before {
   max-width: 25%;
   width: 100% !important;
   text-align: center;
-  background-color: #0e3c40;
+  background-color: #159999;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle {
@@ -2400,7 +2399,7 @@ i:before {
   outline: none !important;
   position: relative;
   border-radius: 0px;
-  background-color: : #0e3c40;
+  background-color: #159999;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle span {
@@ -2410,14 +2409,13 @@ i:before {
   color: white;
   text-transform: uppercase;
   text-align: center !important;
-  background:  #0e3c40;
 }
 
 .advanced_search_area .bootstrap-select .dropdown-toggle:after {
   content: "\33";
   font-family: 'ElegantIcons';
   font-size: 14px;
-  color: #0e3c40;
+  color: #159999;
   margin: 0px;
   width: auto;
   height: auto;
@@ -2495,7 +2493,7 @@ i:before {
 }
 
 .advanced_search_area .input-group .input-group-btn .btn-secondary {
-  background: #0e3c40;
+  background: #159999;
   border-radius: 0px;
   outline: none !important;
   -webkit-box-shadow: none !important;
@@ -2636,10 +2634,10 @@ i:before {
 }
 
 .update_btn {
-  background: transparent;
-  border: 1px solid #cccccc;
+  background: #159999;
+  border: 1px solid dimgray;
   border-radius: 0px;
-  color: #000;
+  color: #fff;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -2657,9 +2655,9 @@ i:before {
 }
 
 .update_btn:hover {
-  background: #333333;
-  border-color: #333333;
-  color: #fff;
+  background: #fff;
+  border: 1px solid #159999;
+  color: #159999;
 }
 
 .checkout_btn {
@@ -4292,7 +4290,7 @@ i:before {
 }
 
 .cart_totals .cart_total_inner {
-  background: #333333;
+  background: #159999;
   padding: 56px 60px 65px 60px;
   margin-bottom: 20px;
 }
@@ -4711,7 +4709,6 @@ i:before {
 }
 
 .checkout_main_area .checkout_prosses .checkout_method .update_btn {
-  margin-top: 28px;
   padding: 0px 43px;
   line-height: 46px;
   border: 2px solid #999999;
@@ -5621,7 +5618,7 @@ i:before {
 }
 
 .l_title {
-  background: #0e3c40;
+  background: #159999;
   padding: 20px 0px 20px 30px;
 }
 
@@ -6628,9 +6625,9 @@ i:before {
 /* Footer Area css
 ============================================================================================ */
 .footer_widgets {
+  margin-top: 1%;
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
-  padding-top: 50px;
 }
 
 .footer_bg {
@@ -6905,15 +6902,20 @@ i:before {
 }
 
 .imgborder{
-    border-bottom: 1px solid #0e3c40;
+    width: 100%;
+    height: auto;
 }
 
 .footer_copyright{
-  background-color: #0e3c40;
+  background-color: #159999;
 }
 
 .footer_copyright h5{
   color: #fff;
+}
+
+.imgCard{
+  width: 100px;
 }
 /* End Parallax Footer Area css
 ============================================================================================ */

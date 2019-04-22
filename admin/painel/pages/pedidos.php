@@ -39,7 +39,7 @@
                             $btnSts = 'warning';
 
                         }elseif($campos['status'] == '1'){
-                            $status = "Pedido";
+                            $status = "Autorizado";
                             $btnSts = 'success';
 
                         }elseif($campos['status'] == '2'){

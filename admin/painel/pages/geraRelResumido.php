@@ -31,13 +31,14 @@
                   <h5 class="text-left">Emissor: <?php echo $usuarioLogado->nome ?></h5>
                   <h5 class="text-left">Data: <?php $data = date('d/m/Y'); echo $data ?></h5>
                   <h5 class="text-left mb-3">Hora: <?php $hora = date('H:i:s'); echo $hora ?></h5>
-                  <h3 class="text-center mb-5">RELATÓRIO RESUMIDO DE PEDIDOS</h3>
+                  <h3 class="text-center mb-5">RELATÓRIO RESUMIDO DE PEDIDOS AUTORIZADOS</h3>
                   <tbody>
                     <?php
-                      $pegar_produtos = BD::conn()->prepare("SELECT produto.titulo as titulo, produto.categoria as categoria, sum(pedido.qtd) as qtd
-                                                             FROM tblmvmprodped as pedido
-                                                             JOIN tblcdsprod AS produto ON (produto.id = pedido.id_produto)
-                                                             GROUP BY pedido.id_produto, produto.titulo
+                      $pegar_produtos = BD::conn()->prepare("SELECT produto.titulo as titulo, produto.categoria as categoria, sum(prodpedido.qtd) as qtd
+                                                             FROM tblmvmprodped as prodpedido
+                                                             JOIN tblcdsprod AS produto ON (produto.id = prodpedido.id_produto)
+                                                             JOIN tblmvmped AS pedido ON (pedido.id = prodpedido.id_pedido and pedido.status = 1)
+                                                             GROUP BY prodpedido.id_produto, produto.titulo
                                                              ORDER BY produto.titulo");
                       $pegar_produtos->execute();
                       if($pegar_produtos->rowCount() == 0){

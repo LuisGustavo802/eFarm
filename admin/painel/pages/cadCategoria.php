@@ -12,14 +12,15 @@
         $verificarCat = BD::conn()->prepare("SELECT id FROM `tblcdscat` WHERE titulo = ?");
         $verificarCat->execute(array($nome));
         if($verificarCat->rowCount() > 0){
-            echo '<script>alert("Essa categoria já está cadastrada!");location:href="index.php?pagina=editCategoria&categoria='.$categoria->id.'"</script>';
+          echo '<div class="alert alert-warning" role="alert">
+                 <strong>Essa categoria já foi cadastrada!</strong>
+               </div>';
         }else{
           include_once "inc/slug.php";
           $slug = slugify($nome);
           $dados = array(
-                          'titulo'  => $nome,
-                          'slug'  => $slug,
-                          'views' => 0
+                          'titulo' => utf8_decode($nome),
+                          'slug'   => $slug
                         );
           if($Site->inserir('tblcdscat', $dados)){
             echo '<script>alert("Ok, categoria cadastrada com sucesso!");location:href="index.php?pagina=lisCategoria"</script>';

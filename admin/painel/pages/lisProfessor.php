@@ -15,7 +15,7 @@
       <div class="col-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Listar professores <?php echo $id_pedido ?></h4>
+            <h4 class="card-title">Listar professores</h4>
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -41,7 +41,7 @@
                   <tr>
                     <?php
                       $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
-                      $maximo = '15';
+                      $maximo = '10';
                       $inicio = (($pg * $maximo) - $maximo);
                       $pegar_professores = BD::conn()->prepare("SELECT * FROM `tblcdsprof` LIMIT $inicio, $maximo");
                       $pegar_professores->execute();

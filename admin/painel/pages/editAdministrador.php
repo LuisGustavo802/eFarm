@@ -75,7 +75,7 @@
           $verificarAdm = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE nome = ? and email = ? and senha = ? and data = ? and opCoo = ? and opUne = ? and opFor = ? and opAdm = ? and
                                               opProf = ? and opCat = ? and opProd = ? and opPed = ? and opRel = ?");
           $verificarAdm->execute(array($nome,$emailLog,$senhaLog,$data,$checkCoordenacao,$checkUnepe,$checkFornecedor,$checkAdministrador,$checkProfessor,$checkCategoria,
-                                       $checkProduto,$checkPedido,$checkRelatorio));
+                                       $checkProduto,$checkPedido,$checkRelatorio)); //select sem senha criptografa.
           if($verificarAdm->rowCount() > 0){
               echo '<script>alert("Não é possivel editar sem alguma alteração!");location:href="index.php?pagina=lisAdministrador"</script>';
           }else{
@@ -109,7 +109,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Senha:</label>
-              <input type="text" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosAdm->senha; ?>">
+              <input type="password" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosAdm->senha; ?>">
             </div>
             <label class="card-title mt-5">Liberação de menu</label>
             <div class="table-responsive">

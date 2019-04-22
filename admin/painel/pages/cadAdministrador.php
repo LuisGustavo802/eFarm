@@ -19,6 +19,12 @@
       }else{
           $checkUnepe = 0;
       }
+      if(isset($_POST['checkOrcamento']))
+      {
+          $checkOrcamento = $_POST['checkOrcamento'][0];
+      }else{
+          $checkOrcamento = 0;
+      }
       if(isset($_POST['checkFornecedor']))
       {
           $checkFornecedor = $_POST['checkFornecedor'][0];
@@ -67,16 +73,19 @@
   								<strong>'.$erros[0].'</strong>
   							</div>';
       }else{
-          $now = date('Y-m-d');
           $verificarUsuario = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE email = ?");
           $verificarUsuario->execute(array($emailLog));
           if($verificarUsuario->rowCount() > 0){
-              echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="index.php?pagina=cadAdministrador"</script>';
+            echo '<div class="alert alert-warning" role="alert">
+                   <strong>Já existe um administrador que utiliza esse email!</strong>
+                 </div>';
           }else{
+              $now = date('Y-m-d');
+              $options = ['cost' => 10,];
               $dados = array(
-                              'nome'   => $nome,
+                              'nome'   => utf8_decode($nome),
                               'email'  => $emailLog,
-                              'senha'  => $senhaLog,
+                              'senha'  => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
                               'data'   => $now,
                               'opCoo'  => $checkCoordenacao,
                               'opUne'  => $checkUnepe,
@@ -86,7 +95,8 @@
                               'opCat'  => $checkCategoria,
                               'opProd' => $checkProduto,
                               'opPed'  => $checkPedido,
-                              'opRel'  => $checkRelatorio
+                              'opRel'  => $checkRelatorio,
+                              'opOrc'  => $checkOrcamento
                             );
               if($Site->inserir('tblcdsadm', $dados)){
                  echo '<script>alert("Ok, administrador cadastrado com sucesso!");location:href="index.php?pagina=lisAdministrador"</script>';
@@ -117,107 +127,129 @@
               <input type="text" class="form-control" name="senhaLog" placeholder="Senha">
             </div>
             <label class="card-title mt-5">Liberação de menu</label>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>
-                      Menu Coordenações
-                    </th>
-                    <th>
-                      Menu Unepes
-                    </th>
-                    <th>
-                      Menu Fornecedores
-                    </th>
-                    <th>
-                      Menu Administradores
-                    </th>
-                    <th>
-                      Menu Professores
-                    </th>
-                    <th>
-                      Menu Categorias
-                    </th>
-                    <th>
-                      Menu Produtos
-                    </th>
-                    <th>
-                      Menu Pedidos
-                    </th>
-                    <th>
-                      Menu Relatórios
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkCoordenacao[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkAdministrador[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkProfessor[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkCategoria[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkProduto[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkPedido[]" value="1">Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkRelatorio[]" value="1"> Permitir
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        Menu Administradores
+                      </th>
+                      <th>
+                        Menu Categorias
+                      </th>
+                      <th>
+                        Menu Coordenações
+                      </th>
+                      <th>
+                        Menu Fornecedores
+                      </th>
+                      <th>
+                        Menu Orçamentos
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkAdministrador[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkCategoria[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkCoordenacao[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkOrcamento[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        Menu Pedidos
+                      </th>
+                      <th>
+                        Menu Produtos
+                      </th>
+                      <th>
+                        Menu Professores
+                      </th>
+                      <th>
+                        Menu Relatórios
+                      </th>
+                      <th>
+                        Menu Unepes
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkPedido[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkProduto[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkProfessor[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkRelatorio[]" value="1"> Permitir
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1">Permitir
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             <button type="submit" class="btn btn-gradient-primary mr-2 mt-5" value="Próximo Passo">Cadastrar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Cadastrar"/>

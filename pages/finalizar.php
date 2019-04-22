@@ -2,7 +2,7 @@
 	if(!$login->isLogado()){
 		header("Location: ".PATH."");
 	}elseif ($Carrinho->qtdProdutos() == 0) {
-	  header("Location: ".PATH."");
+	  header("Location: ".PATH."carrinho");
 	}else{
 		if(!isset($_SESSION['realizado'])){
 			$strSQL = "INSERT INTO `tblmvmped` (id_prof, valor_total, unepe, status, criado) VALUES (?,?,?,0,NOW())";

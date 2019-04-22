@@ -30,28 +30,36 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
 								<strong>Informe a imagem</strong>
 							</div>';
      }else{
-        $nomeImg = md5(uniqid(rand(), true)).$img_padrao['name'];
-        $Site->upload($img_padrao['tmp_name'], $img_padrao['name'], $nomeImg, '350', '../../img/product/');
-        $now = date('Y-m-d');
-        $dados = array(  'img_padrao'      => $nomeImg,
-                          'titulo'         => $titulo,
-                          'slug'           => $slug,
-                          'categoria'      => $categoria,
-                          'subcategoria'   => 'VER SUBCATEGORIA',
-                          'valor_anterior' => $valAnterior,
-                          'valor_atual'    => $valAtual,
-                          'descricao'      => $descricao,
-                          'peso'           => $peso,
-                          'estoque'        => $qtdEstoque,
-                          'data'           => $now,
-                          'views'          => 0
-                        );
-        if($Site->inserir('tblcdsprod', $dados)){
-           $_SESSION['ultimoId'] = BD::conn()->lastInsertId();
-           echo '<script>alert("Ok, produto cadastrado com sucesso!");location:href="index.php?pagina=lisProdutos"</script>';
-        }else{
-           echo '<script>alert("Erro, não foi possível cadastrar esse produto!");location:href="index.php?pagina=lisProdutos"</script>';
-        }
+       $verificaProduto = BD::conn()->prepare("SELECT id FROM `tblcdsprod` WHERE titulo = ?");
+       $verificaProduto->execute(array($titulo));
+       if($verificaProduto->rowCount() > 0){
+          echo '<div class="alert alert-warning" role="alert">
+                 <strong>Já existe um produto com esse titulo!</strong>
+               </div>';
+       }else{
+          $permissao ="0775";
+          $nomeImg = md5(uniqid(rand(), true)).$img_padrao['name'];
+          $Site->upload($permissao,$img_padrao['tmp_name'], $img_padrao['name'], $nomeImg, '350', '../../img/product/');
+          $now = date('Y-m-d');
+          $dados = array(   'img_padrao'     => $nomeImg,
+                            'titulo'         => utf8_decode($titulo),
+                            'slug'           => $slug,
+                            'categoria'      => $categoria,
+                            'subcategoria'   => 'EM PRODUCAO',
+                            'valor_anterior' => $valAnterior,
+                            'valor_atual'    => $valAtual,
+                            'descricao'      => $descricao,
+                            'peso'           => $peso,
+                            'estoque'        => $qtdEstoque,
+                            'data'           => $now
+                          );
+          if($Site->inserir('tblcdsprod', $dados)){
+             $_SESSION['ultimoId'] = BD::conn()->lastInsertId();
+             echo '<script>alert("Ok, produto cadastrado com sucesso!");location:href="index.php?pagina=lisProdutos"</script>';
+          }else{
+             echo '<script>alert("Erro, não foi possível cadastrar esse produto!");location:href="index.php?pagina=lisProdutos"</script>';
+          }
+       }
      }
 endif;
 ?>

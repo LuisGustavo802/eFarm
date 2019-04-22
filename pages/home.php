@@ -1,5 +1,4 @@
 <section class="home_sidebar_area">
-    <div class="container">
         <div class="row row_disable">
             <div class="col-lg-9 float-md-right">
                 <div class="sidebar_main_content_area">
@@ -19,7 +18,7 @@
                     <div class="main_slider_area">
                         <ul>
                             <!-- MAIN IMAGE -->
-                            <img class="imgborder" src="img/agro.png"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                            <img class="imgborder" src="img/agro.jpg">
                         </ul>
                     </div>
                 </div>
@@ -35,5 +34,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>

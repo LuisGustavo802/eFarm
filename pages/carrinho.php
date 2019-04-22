@@ -19,7 +19,6 @@
 	}
 	if(isset($_POST['prodSingle'])){
 			$produtoValor = $_POST['prodSingle'];
-
 			if($Carrinho->atualizarQuantidadesSingle($produtoValor)){
 				//apenas seta os valores
 			}else{
@@ -50,60 +49,53 @@
 	}
 ?>
 <section class="shopping_cart_area p_100">
-    <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="cart_product_list">
                     <h3 class="cart_single_title">Seu carrinho</h3>
                     <div class="table-responsive-md">
-                        <table class="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">DELETAR</th>
                                     <th scope="col">PRODUTO</th>
                                     <th scope="col">VLR. UNIT.</th>
                                     <th scope="col">QUANTIDADE</th>
                                     <th scope="col">VLR. TOTAL</th>
+																		<th scope="col">DELETAR</th>
                                 </tr>
                             </thead>
                             <tbody>
                               <form action="<?php echo PATH.'carrinho/atualizar'; ?>" method="post" enctype="multipart/form-data">
-                  								<?php
-                  									if($Carrinho->qtdProdutos() == 0){
-                  										$total = 0; //Erro na atribuição do total
-                  										echo'<td>
-                  											<div class="media">
-                  												<div class="media-body">
-                  													<p>Sem produtos no seu carrinho.</p>
-                  												</div>
-                  											</div>
-                  										</td><td></td><td></td><td></td><td></td>';
-                  									}else{
-                  										$total = 0;
-                  										foreach($_SESSION['eFarm_produto'] as $id => $quantidade){
-                  											$selecao = BD::conn()->prepare("SELECT * FROM `tblcdsprod` WHERE id = ?");
-                  											$selecao->execute(array($id));
-                  											$fetchProduto = $selecao->fetchObject();
-                  								    ?>
-                                      <tr>
-                                          <th scope="row">
-                                              <a href="<?php echo PATH.'carrinho/del/'.$id; ?>" alt=""><img src="<?php echo PATH; ?>img/icon/close-icon.png"></a>
-                                          </th>
-                                          <td>
-                                              <div class="media">
-                                                  <div class="d-flex">
-                                                      <img src="<?php echo PATH;?>img/product/<?php echo $fetchProduto->img_padrao;?>" alt="">
-                                                  </div>
-                                                  <div class="media-body">
-                                                      <h4<p><?php echo $fetchProduto->titulo;?></p></h4>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><p><?php echo number_format($fetchProduto->valor_atual, 2,',','.');?></p></td>
-                                          <td><input type="text" Name="prod[<?php echo $id;?>]" value="<?php echo $quantidade;?>"></td>
-                                          <td><p><?php echo number_format($fetchProduto->valor_atual * $quantidade, 2,',','.');?></p></td>
-                                      </tr>
-                                      <?php $total += $fetchProduto->valor_atual * $quantidade;}} ?>
+              								  <?php
+              									if($Carrinho->qtdProdutos() == 0){
+              										$total = 0; //Erro na atribuição do total
+              										echo'<td>
+              											<div class="media">
+              												<div class="media-body">
+              													<p>Sem produtos no seu carrinho.</p>
+              												</div>
+              											</div>
+              										</td><td></td><td></td><td></td><td></td>';
+              									}else{
+              										$total = 0;
+              										foreach($_SESSION['eFarm_produto'] as $id => $quantidade){
+              											$selecao = BD::conn()->prepare("SELECT * FROM `tblcdsprod` WHERE id = ?");
+              											$selecao->execute(array($id));
+              											$fetchProduto = $selecao->fetchObject();
+              								    ?>
+                                  <tr>
+                                      <td>
+																				  <img  class="imgCard" src="<?php echo PATH;?>img/product/<?php echo $fetchProduto->img_padrao;?>" alt=""/>
+                                          <h4><p><?php echo $fetchProduto->titulo; ?></p></h4>
+                                      </td>
+                                      <td><p><?php echo number_format($fetchProduto->valor_atual, 2,',','.');?></p></td>
+                                      <td><input type="text" Name="prod[<?php echo $id;?>]" value="<?php echo $quantidade;?>"></td>
+                                      <td><p><?php echo number_format($fetchProduto->valor_atual * $quantidade, 2,',','.');?></p></td>
+																			<th scope="row">
+																					<a href="<?php echo PATH.'carrinho/del/'.$id; ?>" alt=""><img src="<?php echo PATH; ?>img/icon/close-icon.png"></a>
+																			</th>
+                                  </tr>
+                                  <?php $total += $fetchProduto->valor_atual * $quantidade; }} ?>
                             </tbody>
                         </table>
                     </div>
@@ -111,30 +103,33 @@
             </div>
             <div class="col-lg-4">
                 <div class="total_amount_area">
-                    <div class="cupon_box">
-										 <div class="col-lg-8">
-											<h3 class="cart_single_title">Escolha a unepe</h3>
-												<select class="form-control" name="unepe">
-													<option value="0" selected="selected">Selecione</option>
-													<?php
-															$pegar_categorias = BD::conn()->prepare("SELECT * FROM `tblcdsune` ORDER BY id DESC");
-															$pegar_categorias->execute();
-															while($cat = $pegar_categorias->fetchObject()){
-													?>
-													<option value="<?php echo $cat->nome; ?>"><?php echo $cat->nome; ?></option>
-												<?php } ?>
-												</select>
-												<h3 class="cart_single_title"></h3>
-                        <button type="submit" class="btn btn-primary subs_btn"  value="" id="update" name="atualizarUnepe">SELECIONE A UNEPE</button>
-											</div>
-                    </div>
-                    </form>
                     <div class="cart_totals">
-                        <h3 class="cart_single_title">CUPOM DE PEDIDO</h3>
                         <div class="cart_total_inner">
                             <ul>
-																<li><a href="#"><h5>Cód. Cupom:</h5><br> N° <?php echo $fetchProduto->id;?></a></li>
-                                <li><a href="#"><h5>Valor aprox:</h5><br> R$ <?php echo number_format($total, 2,',','.'); ?></a></li>
+																<?php
+																		$pegar_ultped = BD::conn()->prepare("SELECT id FROM `tblmvmped` ORDER BY id DESC LIMIT 1");
+																		$pegar_ultped->execute();
+																		$ped = $pegar_ultped->fetchObject();
+																?>
+																<li><a href="#"><h5>N° Nota Pedido:</h5><br> N° <?php echo $ped->id+1; ?></a></li><br>
+																<li><a href="#"><h5>Qtd. Produtos:</h5><br>
+																	  	<button type="submit" class="btn btn-primary subs_btn" name="atualizar">Atualizar</button>
+																		</a>
+																</li><br>
+																<li><a href="#"><h5>Unepe:</h5><br>
+																		<select class="form-control" name="unepe">
+																			<option value="0" selected="selected">Selecione</option>
+																			<?php
+																					$pegar_categorias = BD::conn()->prepare("SELECT * FROM `tblcdsune` ORDER BY id DESC");
+																					$pegar_categorias->execute();
+																					while($cat = $pegar_categorias->fetchObject()){
+																			?>
+																				  <option value="<?php echo $cat->nome; ?>"><?php echo $cat->nome; ?></option>
+																		  <?php } ?>
+																		</select>
+																		<br>
+						                        <button type="submit" class="btn btn-primary subs_btn" name="atualizarUnepe">SELECIONAR</button></a></li>
+																	</form>
                             </ul>
                         </div>
                         <a type="submit" class="btn btn-primary update_btn" href="<?php echo PATH.'loja' ?>"> VOLTAR A LOJA</a>
@@ -152,5 +147,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>

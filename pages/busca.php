@@ -4,8 +4,9 @@
 	 $pegar_dados_categoria->execute(array($pegar_categoria));
 	 $fetch_cat = $pegar_dados_categoria->fetchObject();
 ?>
+
+<!--================Categories Product Area =================-->
 <section class="categories_product_main p_80">
-    <div class="container">
         <div class="categories_main_inner">
             <div class="row row_disable">
                 <div class="col-lg-9 float-md-right">
@@ -110,7 +111,7 @@
                     <div class="categories_sidebar">
                         <aside class="l_widgest l_p_categories_widget">
                             <div class="l_w_title">
-                              <a href="<?php PATH.'loja' ?>"><h3>Categorias</h3></a>
+                              <a href="<?php PATH.'loja' ?>"><h3>Categories</h3></a>
                             </div>
                                 <?php include_once"inc/menucategorialoja.php" ?>
                         </aside>
@@ -118,5 +119,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
+<!--================End Categories Product Area =================-->

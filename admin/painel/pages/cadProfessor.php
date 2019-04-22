@@ -22,20 +22,61 @@
           $verificarUsuario = BD::conn()->prepare("SELECT id FROM `tblcdsprof` WHERE email = ?");
           $verificarUsuario->execute(array($emailLog));
           if($verificarUsuario->rowCount() > 0){
-              echo '<script>alert("Esse email já está cadastrado, escolha outro!");location:href="'.PATH.'cadastro"</script>';
+            echo '<div class="alert alert-warning" role="alert">
+                   <strong>Já existe um professor com esse email!</strong>
+                 </div>';
           }else{
-              $now = date('Y-m-d');
-              $dados = array(
-                              'nome'         => $nome,
-                              'email'        => $emailLog,
-                              'senha'        => $senhaLog,
-                              'data'         => $now,
-                              'tipo_usuario' => $checkAcessoAdm
-                            );
-              if($Site->inserir('tblcdsprof', $dados)){
-                  echo '<script>alert("Ok, professor cadastrador com sucesso!");location:href="?pagina=lisProfessor"</script>';
+             if(substr($emailLog, 0, 4) == "prof"){
+                  $options = ['cost' => 10,];
+                  $now = date('Y-m-d');
+                  $dados = array(
+                                  'nome'         => $nome,
+                                  'email'        => $emailLog,
+                                  'senha'        => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
+                                  'data'         => $now,
+                                  'tipo_usuario' => $checkAcessoAdm
+                                );
+                  if($Site->inserir('tblcdsprof', $dados)){
+                      if($checkAcessoAdm == 1){
+                          $verificarUsuario = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE email = ?");
+                          $verificarUsuario->execute(array($emailLog));
+                          if($verificarUsuario->rowCount() > 0){
+                            echo '<div class="alert alert-danger" role="alert">
+                                   <strong>Já existe um administrador que utiliza esse email!</strong>
+                                 </div>';
+                          }else{
+                              $now = date('Y-m-d');
+                              $options = ['cost' => 10,];
+                              $dadosAdm = array(
+                                              'nome'   => utf8_decode($nome),
+                                              'email'  => $emailLog,
+                                              'senha'  => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
+                                              'data'   => $now,
+                                              'opCoo'  => 0,
+                                              'opUne'  => 0,
+                                              'opFor'  => 0,
+                                              'opAdm'  => 0,
+                                              'opProf' => 0,
+                                              'opCat'  => 0,
+                                              'opProd' => 0,
+                                              'opPed'  => 0,
+                                              'opRel'  => 0,
+                                              'opOrc'  => 0
+                                                );
+                              if($Site->inserir('tblcdsadm', $dadosAdm)){
+                                 echo '<script>alert("Ok, professor administrador cadastrado com sucesso!");location:href="index.php?pagina=lisAdministrador"</script>';
+                              }else{
+                                 echo '<script>alert("Erro, não foi possivel cadastrar esse professor como administrador");location:href="index.php?pagina=lisAdministrador"</script>';
+                              }
+                         }
+                      }else{
+                         echo '<script>alert("Ok, professor cadastrado com sucesso!");location:href="?pagina=lisProfessor"</script>';
+                      }
+                  }else{
+                      echo '<script>alert("Erro, Não foi possivel cadastrar esse professor!");location:href="?pagina=lisProfessor"</script>';
+                  }
               }else{
-                  echo '<script>alert("Erro, Não foi possivel cadastrar esse professor!");location:href="?pagina=lisProfessor"</script>';
+                  echo '<script>alert("Erro, não foi possivel cadastrar esse professor!");location:href="?pagina=lisProfessor"</script>';
               }
           }
       }
@@ -46,7 +87,7 @@
     <div class="col-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Cadastro de professor <?php echo $dadosProd->titulo; ?></h4>
+          <h4 class="card-title">Cadastro de professor</h4>
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
@@ -58,7 +99,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Senha:</label>
-              <input type="text" class="form-control" name="senhaLog" placeholder="Senha">
+              <input  type="password" class="form-control" required="required" name="senhaLog" placeholder="Senha">
             </div>
             <label class="card-title">Liberação da administração</label>
             <div class="form-check">

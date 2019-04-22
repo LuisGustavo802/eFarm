@@ -41,7 +41,7 @@
                   <tr>
                     <?php
                       $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
-                      $maximo = '15';
+                      $maximo = '10';
                       $inicio = (($pg * $maximo) - $maximo);
                       $pegar_fornecedores = BD::conn()->prepare("SELECT * FROM `tblcdsfor` LIMIT $inicio, $maximo");
                       $pegar_fornecedores->execute();

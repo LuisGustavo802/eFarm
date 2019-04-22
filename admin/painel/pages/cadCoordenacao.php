@@ -12,10 +12,12 @@
         $verificarCoordenacao = BD::conn()->prepare("SELECT id FROM `tblcdscor` WHERE nome = ?");
         $verificarCoordenacao->execute(array($nome));
         if($verificarCoordenacao->rowCount() > 0){
-            echo '<script>alert("Essa coordenação já está cadastrada!");location:href="index.php?pagina=editCoordenacao&coordenacao='.$coordenacao->id.'"</script>';
+          echo '<div class="alert alert-warning" role="alert">
+                 <strong>Já existe uma coordenação com esse nome!</strong>
+               </div>';
         }else{
           $dados = array(
-                          'nome' => $nome,
+                          'nome' => utf8_decode($nome),
                         );
           if($Site->inserir('tblcdscor', $dados)){
               echo '<script>alert("Ok, coordenação cadastrada com sucesso!");location:href="index.php?pagina=lisCoordenacao"</script>';

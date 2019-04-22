@@ -1,3 +1,3 @@
 <ul>
-  <?php $Site->getMenuCategoriaTop(); ?>
+  <?php utf8_decode($Site->getMenuCategoriaTop()); ?>
 </ul>

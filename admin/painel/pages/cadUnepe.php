@@ -11,10 +11,12 @@
   								<strong>'.$erros[0].'</strong>
   							</div>';
       }else{
-        $verificarUnepe = BD::conn()->prepare("SELECT id FROM `tblcdsune` WHERE nome = ?");
-        $verificarUnepe->execute(array($nome));
+        $verificarUnepe = BD::conn()->prepare("SELECT id FROM `tblcdsune` WHERE nome = ? and coordenacao = ?");
+        $verificarUnepe->execute(array($nome,$coordenacao));
         if($verificarUnepe->rowCount() > 0){
-           echo '<script>alert("Essa unepe já está cadastrada!");location:href="index.php?pagina=editUnepe&unepe='.$unepe->id.'"</script>';
+          echo '<div class="alert alert-warning" role="alert">
+                 <strong>Essa unepe já está cadastrada!</strong>
+               </div>';
         }else{
           $dados = array(
                           'nome' => $nome,

@@ -1,5 +1,4 @@
 <section class="categories_product_main p_80">
-    <div class="container">
         <div class="categories_main_inner">
             <div class="row row_disable">
                 <div class="col-lg-9 float-md-right">
@@ -24,7 +23,7 @@
                                     </div>
                                     <div class="l_p_text">
                                        <ul>
-                                            <li class="p_icon"><a href="<?php echo PATH.'produto/'.$produto['slug']; ?>"><i class="icon_piechart"></i></a></li>
+                                            <li class="p_icon"><a href="<?php echo PATH.'produto/'.$produto['slug']; ?>"><i class="icon-eye"></i></a></li>
                                             <li><a class="add_cart_btn" href="<?php echo PATH.'carrinho/add/'.$produto['id']; ?>">Add carrinho</a></li>
                                         </ul>
                                         <h4><?php echo $produto['titulo']; ?></h4>
@@ -39,7 +38,7 @@
                             <li class="page-item">
                             <?php
 																$sql_res = BD::conn()->prepare("SELECT * FROM `tblcdsprod` ORDER BY id DESC");
-																$sql_res-> execute(array($pegar_categoria));
+																$sql_res-> execute();
 																$total = $sql_res->rowCount();
 																$pags = ceil($total/$maximo);
 																$links = '5';
@@ -72,5 +71,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>

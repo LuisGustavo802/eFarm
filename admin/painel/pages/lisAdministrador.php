@@ -41,7 +41,7 @@
                   <tr>
                     <?php
                       $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
-                      $maximo = '15';
+                      $maximo = '10';
                       $inicio = (($pg * $maximo) - $maximo);
                       $pegar_administradores = BD::conn()->prepare("SELECT * FROM `tblcdsadm` LIMIT $inicio, $maximo");
                       $pegar_administradores->execute();

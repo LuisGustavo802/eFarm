@@ -46,7 +46,7 @@ endif;
                   <tr>
                     <?php
                       $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
-                      $maximo = '15';
+                      $maximo = '10';
                       $inicio = (($pg * $maximo) - $maximo);
                       $pegar_produtos = BD::conn()->prepare("SELECT * FROM `tblcdsprod` LIMIT $inicio, $maximo");
                       $pegar_produtos->execute();

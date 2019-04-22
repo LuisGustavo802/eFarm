@@ -83,7 +83,13 @@
       }//deleta ou atualiza quantidades referentes a um produto no nosso carrinho de compras comprados pela pag do produto
 
       public function qtdProdutos(){
-          return count($_SESSION[$this->pref.'produto']);
+          if(!isset($_SESSION[$this->pref.'produto'])){
+             return 0;
+          }else{
+             if($this->isArray($_SESSION[$this->pref.'produto'])){
+                return count($_SESSION[$this->pref.'produto']);
+             }
+          }
       }//retorna quantidade do Carrinho
 
   }

@@ -22,10 +22,12 @@
                                                                                 and endereco = ? and bairro = ? and complemento = ? and cidade = ?");
           $verificarUsuario->execute(array($nome,$cnpj,$cpf,$email,$telefone,$endereco,$bairro,$complemento,$cidade));
           if($verificarUsuario->rowCount() > 0){
-              echo '<script>alert("Esse fornecedor já está cadastrado!");location:href="'.PATH.'cadastro"</script>';
+            echo '<div class="alert alert-warning" role="alert">
+                   <strong>Esse fornecedor já está cadastrado!</strong>
+                 </div>';
           }else{
               $dados = array(
-                              'nome'         => $nome,
+                              'nome'         => utf8_decode($nome),
                               'cnpj'         => $cnpj,
                               'cpf'          => $cpf,
                               'email'        => $email,

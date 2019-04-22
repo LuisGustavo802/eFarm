@@ -2,9 +2,9 @@
    	ob_start(); //LIMPA BUFFER
     session_start();
     include_once "../../config.php";
-    function __autoload($classe){
-          require_once "../../classes/$classe".'.class.php';
-    }
+    spl_autoload_register(function($classe){
+       require_once "../../classes/$classe".'.class.php';
+    });
     BD::conn();
     $login = new Login('adm_','tblcdsadm');
     $Site  = new Site();

@@ -17,18 +17,23 @@
   								<strong>'.$erros[0].'</strong>
   							</div>';
       }else{
-          $verificarUnepe = BD::conn()->prepare("SELECT id FROM `tblcdsprof` WHERE nome = ? and email = ? and senha = ?");
-          $verificarUnepe->execute(array($nome,$emailLog,$senhaLog));
-          if($verificarUnepe->rowCount() > 0){
+          $verificarProf = BD::conn()->prepare("SELECT id FROM `tblcdsprof` WHERE nome = ? and email = ? and senha = ?");
+          $verificarProf->execute(array($nome,$emailLog,$senhaLog));
+          if($verificarProf->rowCount() > 0){
               echo '<script>alert("Já existe um professor com esses dados!");location:href="index.php?pagina=lisProfessor"</script>';
           }else{
-              $update = BD::conn()->prepare("UPDATE `tblcdsprof` SET nome = ?, email = ?, senha = ? where id = ?");
-              $dados = array($nome,$emailLog,$senhaLog,$idProfessor);
-              if($update->execute($dados)){
-                 header("Location: index.php?pagina=lisProfessor");
-              }else{
-                 echo '<script>alert("Erro, não foi possivel editar o professor");location:href="index.php?pagina=lisProfessor"</script>';
-              }
+            if(substr($emailLog, 0, 4) == "prof"){
+                $options = ['cost' => 10,];
+                $update = BD::conn()->prepare("UPDATE `tblcdsprof` SET nome = ?, email = ?, senha = ? where id = ?");
+                $dados = array($nome,$emailLog,password_hash($senhaLog, PASSWORD_DEFAULT, $options),$idProfessor);
+                if($update->execute($dados)){
+                   header("Location: index.php?pagina=lisProfessor");
+                }else{
+                   echo '<script>alert("Erro, não foi possivel editar o professor");location:href="index.php?pagina=lisProfessor"</script>';
+                }
+            }else{
+               echo '<script>alert("Erro, não foi possivel editar o professor");location:href="index.php?pagina=lisProfessor"</script>';
+            }
          }
      }
  }
@@ -38,7 +43,7 @@
     <div class="col-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Edição de professor <?php echo $dadosProd->titulo; ?></h4>
+          <h4 class="card-title">Edição de professor</h4>
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
@@ -50,7 +55,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Senha:</label>
-              <input type="text" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosProf->senha; ?>">
+              <input type="password" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosProf->senha; ?>">
             </div>
             <button type="submit" class="btn btn-gradient-primary mr-2" value="Próximo Passo">Editar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Editar"/>

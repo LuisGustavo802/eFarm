@@ -73,7 +73,7 @@
     <div class="col-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Edição de produto <?php echo $dadosProd->titulo; ?></h4>
+          <h4 class="card-title">Edição de produto</h4>
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Mudar imagem Padrão:</label>

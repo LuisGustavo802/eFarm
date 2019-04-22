@@ -7,7 +7,7 @@
         $status = 'Pendente';
         $btnSts = 'warning';
     }elseif($fetchPedido->status == 1){
-        $status = 'Pedido';
+        $status = 'Autorizado';
         $btnSts = 'success';
     }elseif($fetchPedido->status == 2){
         $status = 'Recusado';

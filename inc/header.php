@@ -2,9 +2,9 @@
     ob_start(); //LIMPA BUFFER
     session_start(); //START DA SESSION
     include_once "config.php";
-    function __autoload($classe){
+    spl_autoload_register(function($classe){
        require_once 'classes/'.$classe.'.class.php';
-    }
+    });
     BD::conn();
     $Site = new Site();
     $Carrinho = new Carrinho();
@@ -39,6 +39,7 @@
     <link href="<?php echo PATH; ?>vendors/vertical-slider/css/jQuery.verticalCarousel.css" rel="stylesheet">
     <link href="<?php echo PATH; ?>css/style.css" rel="stylesheet">
     <link href="<?php echo PATH; ?>css/responsive.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <header class="shop_header_area carousel_menu_area">
@@ -56,7 +57,7 @@
                         <?php }else{	?>
                           <li><a href="<?php echo PATH.'cadastro' ?>">CADASTRAR-SE</a></li>
                           <li><a href="#">|</a></li>
-                          <li><a href="<?php echo PATH.'login' ?>">ENTRAR</a></li>
+                          <li><a href="<?php echo PATH.'verificar' ?>">ENTRAR</a></li>
                         <?php }	?>
                     </ul>
                 </div>

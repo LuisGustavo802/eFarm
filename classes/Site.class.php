@@ -15,7 +15,7 @@
 
       //CATEGORIA TOP
       public function getMenuCategoriaTop(){
-          $pegar_categorias = "SELECT * FROM `tblcdscat` ORDER BY id DESC";
+          $pegar_categorias = "SELECT * FROM `tblcdscat` ORDER BY titulo ASC";
           $executar = self::conn()->prepare($pegar_categorias);
           $executar->execute();
           if($executar->rowCount()==0){}else{
@@ -27,7 +27,7 @@
 
       //CATEGORIA LOJA
       public function getMenuCategoriaLoja(){
-          $pegar_categorias = "SELECT * FROM `tblcdscat` ORDER BY id DESC";
+          $pegar_categorias = "SELECT * FROM `tblcdscat` ORDER BY titulo ASC";
           $executar = self::conn()->prepare($pegar_categorias);
           $executar->execute();
           if($executar->rowCount()==0){}else{
@@ -225,7 +225,7 @@
 
        }
 
-       function upload($tmp, $name, $nome, $larguraP, $pasta){
+       function upload($permissao,$tmp, $name, $nome, $larguraP, $pasta){
           $ext = explode('.',$name);
           $file_extension = end($ext);
 
@@ -250,7 +250,7 @@
           $nova = imagecreatetruecolor($largura, $altura);
           imagecopyresampled($nova, $img, 0,0,0,0, $largura, $altura, $x, $y);
 
-          imagejpeg($nova, $pasta.$nome);
+          imagejpeg($nova, $pasta.$nome, $permissao);
           imagedestroy($img);
           imagedestroy($nova);
           return (file_exists($pasta.$nome)) ? true : false;
