@@ -48,10 +48,10 @@
                       ?>
                     <tr>
                       <td>
-                        <?php echo utf8_encode($produtopedidos->categoria); ?>
+                        <?php echo $produtopedidos->categoria; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($produtopedidos->titulo); ?>
+                        <?php echo $produtopedidos->titulo; ?>
                       </td>
                       <td>
                         <?php echo $produtopedidos->qtd ?>

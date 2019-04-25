@@ -55,10 +55,10 @@
                       <?php echo $campos['id']; ?>
                     </td>
                     <td>
-                      <?php echo utf8_encode($campos['coordenacao']); ?>
+                      <?php echo $campos['coordenacao']; ?>
                     </td>
                     <td>
-                      <?php echo utf8_encode($campos['unepe']); ?>
+                      <?php echo $campos['unepe']; ?>
                     </td>
                     <td>
                       <a class="badge badge-gradient-info" href="?pagina=detPedidos&pedido_id=<?php echo $campos['id']; ?>">Visualizar</a>

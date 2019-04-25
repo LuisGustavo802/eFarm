@@ -83,7 +83,7 @@
               $now = date('Y-m-d');
               $options = ['cost' => 10,];
               $dados = array(
-                              'nome'   => utf8_decode($nome),
+                              'nome'   => $nome,
                               'email'  => $emailLog,
                               'senha'  => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
                               'data'   => $now,

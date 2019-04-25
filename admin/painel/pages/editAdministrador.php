@@ -107,7 +107,7 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo utf8_encode($dadosAdm->nome); ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosAdm->nome; ?>">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email:</label>

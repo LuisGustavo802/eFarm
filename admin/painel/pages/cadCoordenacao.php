@@ -17,7 +17,7 @@
                </div>';
         }else{
           $dados = array(
-                          'nome' => utf8_decode($nome),
+                          'nome' => $nome,
                         );
           if($Site->inserir('tblcdscor', $dados)){
               echo '<script>alert("Ok, coordenação cadastrada com sucesso!");location:href="index.php?pagina=lisCoordenacao"</script>';

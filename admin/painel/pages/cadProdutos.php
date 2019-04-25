@@ -42,13 +42,13 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
           $Site->upload($permissao,$img_padrao['tmp_name'], $img_padrao['name'], $nomeImg, '350', '../../img/product/');
           $now = date('Y-m-d');
           $dados = array(   'img_padrao'     => $nomeImg,
-                            'titulo'         => utf8_decode($titulo),
+                            'titulo'         => $titulo,
                             'slug'           => $slug,
-                            'categoria'      =>  utf8_decode($categoria),
-                            'subcategoria'   => 'EM PRODUCAO',
+                            'categoria'      => $categoria,
+                            'subcategoria'   => 'EM PRODUCAO', //possivel alteração
                             'valor_anterior' => $valAnterior,
                             'valor_atual'    => $valAtual,
-                            'descricao'      =>  utf8_decode($descricao),
+                            'descricao'      => $descricao,
                             'peso'           => $peso,
                             'estoque'        => $qtdEstoque,
                             'data'           => $now

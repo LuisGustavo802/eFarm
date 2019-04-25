@@ -85,16 +85,16 @@
                         <?php echo $campos['id']; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($dadosProf->nome); ?>
+                        <?php echo $dadosProf->nome; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($produto->coordenacao); ?>
+                        <?php echo $produto->coordenacao; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($campos['unepe']); ?>
+                        <?php echo $campos['unepe']; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($fetch->titulo); ?>
+                        <?php echo $fetch->titulo; ?>
                       </td>
                       <td>
                         <?php echo $produto->qtd; ?>

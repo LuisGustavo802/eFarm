@@ -30,7 +30,7 @@
                   $options = ['cost' => 10,];
                   $now = date('Y-m-d');
                   $dados = array(
-                                  'nome'         => utf8_decode($nome),
+                                  'nome'         => $nome,
                                   'email'        => $emailLog,
                                   'senha'        => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
                                   'data'         => $now,
@@ -48,7 +48,7 @@
                               $now = date('Y-m-d');
                               $options = ['cost' => 10,];
                               $dadosAdm = array(
-                                              'nome'   => utf8_decode($nome),
+                                              'nome'   => $nome,
                                               'email'  => $emailLog,
                                               'senha'  => password_hash($senhaLog, PASSWORD_DEFAULT, $options),
                                               'data'   => $now,
@@ -66,7 +66,7 @@
                               if($Site->inserir('tblcdsadm', $dadosAdm)){
                                  echo '<script>alert("Ok, professor administrador cadastrado com sucesso!");location:href="index.php?pagina=lisAdministrador"</script>';
                               }else{
-                                 echo '<script>alert("Erro, não foi possivel cadastrar esse professor como administrador");location:href="index.php?pagina=lisAdministrador"</script>';
+                                 echo '<script>alert("Erro teste, não foi possivel cadastrar esse professor como administrador");location:href="index.php?pagina=lisAdministrador"</script>';
                               }
                          }
                       }else{

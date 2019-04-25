@@ -111,7 +111,7 @@
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" name="check[]" value="<?php echo $produto->id_produto; ?>">
-                        <?php echo utf8_encode($fetch->titulo); ?>
+                        <?php echo $fetch->titulo; ?>
                       </label>
                     </div>
                    <?php } ?>

@@ -51,7 +51,7 @@
                         <?php echo $categoria->id; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($categoria->titulo); ?>
+                        <?php echo $categoria->titulo; ?>
                       </td>
                       <td>
                         <a class="badge badge-gradient-info" href="index.php?pagina=editCategoria&categoria=<?php echo $categoria->id; ?>">Editar</a>

@@ -19,7 +19,7 @@
                </div>';
         }else{
           $dados = array(
-                          'nome' => utf8_decode($nome),
+                          'nome' => $nome,
                           'coordenacao' => $coordenacao
                         );
           if($Site->inserir('tblcdsune', $dados)){

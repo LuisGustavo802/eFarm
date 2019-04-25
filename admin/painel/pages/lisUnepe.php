@@ -54,10 +54,10 @@
                         <?php echo $unepe->id; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($unepe->nome); ?>
+                        <?php echo $unepe->nome; ?>
                       </td>
                       <td>
-                        <?php echo utf8_encode($unepe->coordenacao); ?>
+                        <?php echo $unepe->coordenacao; ?>
                       </td>
                       <td>
                         <a class="badge badge-gradient-info" href="index.php?pagina=editUnepe&unepe=<?php echo $unepe->id; ?>">Editar</a>

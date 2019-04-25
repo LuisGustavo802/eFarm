@@ -53,7 +53,7 @@
                          while($produto = $pegar_produtos->fetchObject()){
                       ?>
                       <td>
-                        <?php echo utf8_encode($produto->titulo); ?>
+                        <?php echo $produto->titulo; ?>
                       </td>
                       <?php if ($produto->estoque >= 0){ ?>
                       <td class="estpositivo">

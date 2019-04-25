@@ -19,7 +19,7 @@
           include_once "inc/slug.php";
           $slug = slugify($nome);
           $dados = array(
-                          'titulo' => utf8_decode($nome),
+                          'titulo' => $nome,
                           'slug'   => $slug
                         );
           if($Site->inserir('tblcdscat', $dados)){
