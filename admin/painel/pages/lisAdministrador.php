@@ -54,7 +54,7 @@
                         <?php echo $administrador->id; ?>
                       </td>
                       <td>
-                        <?php echo $administrador->nome; ?>
+                        <?php echo utf8_encode($administrador->nome); ?>
                       </td>
                       <td>
                         <?php echo $administrador->email; ?>

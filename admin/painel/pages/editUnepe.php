@@ -40,18 +40,18 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosUnepe->nome ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo utf8_encode($dadosUnepe->nome); ?>">
             </div>
             <div class="form-group">
               <label for="exampleSelectGender">Escolha a coordenação:</label>
                 <select class="form-control" name="coordenacao">
-                  <option value="" selected="selected">Atual: <?php echo $dadosUnepe->coordenacao ?></option>
+                  <option value="" selected="selected">Atual: <?php echo utf8_encode($dadosUnepe->coordenacao); ?></option>
                   <?php
                       $pegar_coordenacao = BD::conn()->prepare("SELECT * FROM `tblcdscor` ORDER BY id ASC");
                       $pegar_coordenacao->execute();
                       while($cord = $pegar_coordenacao->fetchObject()){
                   ?>
-                  <option value="<?php echo $cord->nome; ?>"><?php echo $cord->nome; ?></option>
+                  <option value="<?php echo $cord->nome; ?>"><?php echo utf8_encode($cord->nome); ?></option>
                 <?php } ?>
                 </select>
             </div>

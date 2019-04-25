@@ -47,7 +47,7 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosProf->nome; ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo utf8_encode($dadosProf->nome); ?>">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email:</label>
@@ -57,7 +57,20 @@
               <label for="exampleInputEmail3">Senha:</label>
               <input type="password" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosProf->senha; ?>">
             </div>
-            <button type="submit" class="btn btn-gradient-primary mr-2" value="Próximo Passo">Editar</button>
+            <?php
+            if ($dadosProf->tipo_usuario == 1){
+                $checkAcessoAdm = 'checked';
+            }else{
+                $checkAcessoAdm = 'nochecked';
+            }
+            ?>
+            <label class="card-title">Liberação da administração</label>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="checkAcessoAdm[]" value="1" <?php echo $checkAcessoAdm ?>>Permitir
+              </label>
+            </div>
+            <button type="submit" class="btn btn-gradient-primary mt-5 mr-2" value="Próximo Passo">Editar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Editar"/>
           </form>
         </div>

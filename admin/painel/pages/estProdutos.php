@@ -20,7 +20,7 @@
       <div class="col-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Gerenciamento de estoque <?php echo $id_pedido ?></h4>
+            <h4 class="card-title">Gerenciamento de estoque</h4>
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -53,7 +53,7 @@
                          while($produto = $pegar_produtos->fetchObject()){
                       ?>
                       <td>
-                        <?php echo $produto->titulo; ?>
+                        <?php echo utf8_encode($produto->titulo); ?>
                       </td>
                       <?php if ($produto->estoque >= 0){ ?>
                       <td class="estpositivo">

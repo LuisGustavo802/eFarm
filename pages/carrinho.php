@@ -35,24 +35,30 @@
 	}
 	if(isset($_POST['atualizarUnepe'])){
 			$_SESSION['unepe'] = $_POST['unepe'];
-			if($_POST['unepe'] != "0"){
+			if(($_POST['unepe'] != "0") && ($_POST['coordenacao'] != "0")){
+				$_SESSION['coordenacao'] = $_POST['coordenacao'];
 				$atualizarUnepe = 1;
 				echo	'<div class="alert alert-success" role="alert">
-								<strong>Ok!</strong> UNEPE selecionada.
+								<strong>Ok!</strong> Coordenação e Unepe selecionadas.
 							</div>';
 			}else{
 				$atualizarUnepe = 0;
 				echo	'<div class="alert alert-danger" role="alert">
-								<strong>Erro!</strong> UNEPE não foi selecionada.
+								<strong>Erro!</strong> Coordenação ou Unepe não foi selecionada.
 							</div>';
 			}
 	}
 ?>
-<section class="shopping_cart_area p_100">
+<section class="shopping_cart_area">
         <div class="row">
             <div class="col-lg-8">
                 <div class="cart_product_list">
-                    <h3 class="cart_single_title">Seu carrinho</h3>
+										<?php
+												$pegar_ultped = BD::conn()->prepare("SELECT id FROM `tblmvmped` ORDER BY id DESC LIMIT 1");
+												$pegar_ultped->execute();
+												$ped = $pegar_ultped->fetchObject();
+										?>
+                    <div class="cart_single_title"><h3>Seu carrinho</h3><span>CUPOM Pedido:  N° <?php echo $ped->id+1; ?></span></div>
                     <div class="table-responsive-md">
                         <table class="table table-bordered">
                             <thead>
@@ -106,19 +112,19 @@
                     <div class="cart_totals">
                         <div class="cart_total_inner">
                             <ul>
-																<?php
-																		$pegar_ultped = BD::conn()->prepare("SELECT id FROM `tblmvmped` ORDER BY id DESC LIMIT 1");
-																		$pegar_ultped->execute();
-																		$ped = $pegar_ultped->fetchObject();
-																?>
-																<li><a href="#"><h5>N° Nota Pedido:</h5><br> N° <?php echo $ped->id+1; ?></a></li><br>
-																<li><a href="#"><h5>Qtd. Produtos:</h5><br>
-																	  	<button type="submit" class="btn btn-primary subs_btn" name="atualizar">Atualizar</button>
-																		</a>
-																</li><br>
-																<li><a href="#"><h5>Unepe:</h5><br>
-																		<select class="form-control" name="unepe">
-																			<option value="0" selected="selected">Selecione</option>
+																<li><a href="#"><h5>Coordenação e Unepe:</h5><br>
+																		<select class="form-control" name="coordenacao">
+																			<option value="0" selected="selected">Selecione a Coordenação</option>
+																			<?php
+																					$pegar_coordenacoes = BD::conn()->prepare("SELECT * FROM `tblcdscor` ORDER BY id DESC");
+																					$pegar_coordenacoes->execute();
+																					while($cor = $pegar_coordenacoes->fetchObject()){
+																			?>
+																					<option value="<?php echo $cor->nome; ?>"><?php echo $cor->nome; ?></option>
+																			<?php } ?>
+																		</select>
+																		<select class="form-control mt-3" name="unepe">
+																			<option value="0" selected="selected">Selecione a Unepe</option>
 																			<?php
 																					$pegar_categorias = BD::conn()->prepare("SELECT * FROM `tblcdsune` ORDER BY id DESC");
 																					$pegar_categorias->execute();
@@ -128,16 +134,20 @@
 																		  <?php } ?>
 																		</select>
 																		<br>
-						                        <button type="submit" class="btn btn-primary subs_btn" name="atualizarUnepe">SELECIONAR</button></a></li>
+						                        <button type="submit" class="btn btn-primary subs_btn" name="atualizarUnepe">SELECIONAR</button></a></li><br>
+																		<li><a href="#"><h5>Quantidade dos produtos:</h5><br>
+																					<button type="submit" class="btn btn-primary subs_btn" name="atualizar">Atualizar</button>
+																				</a>
+																		</li>
 																	</form>
                             </ul>
                         </div>
-                        <a type="submit" class="btn btn-primary update_btn" href="<?php echo PATH.'loja' ?>"> VOLTAR A LOJA</a>
+                        <a type="submit" class="btn btn-primary update_btn1" href="<?php echo PATH.'loja' ?>"> VOLTAR A LOJA</a>
 												<?php if(isset($_POST['atualizarUnepe']) && $atualizarUnepe == 1){  ?>
 														  <a type="submit" class="btn btn-primary checkout_btn" href="<?php echo PATH.'verificar' ?>">FINALIZAR O PEDIDO</a>
 												<?php }else{
 													echo	'<div class="alert alert-warning mt-3" role="alert">
-																	<strong>Aviso!</strong> Selecione a unepe para finalizar o pedido.
+																	<strong>Aviso!</strong> Selecione uma Coordenação e uma Unepe para finalizar o pedido.
 																</div>';
 												?>
 											  <?php } ?>

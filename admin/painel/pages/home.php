@@ -74,7 +74,10 @@
                       ID pedido
                     </th>
                     <th>
-                      Unep solicitada
+                       Coordenação solicitada
+                    </th>
+                    <th>
+                      Unepe solicitada
                     </th>
                     <th>
                       Detalhes do pedido
@@ -89,7 +92,7 @@
                 </thead>
                 <tbody>
                   <?php
-                     $dados = array('id','id_prof','unepe','valor_total','status','criado');
+                     $dados = array('id','id_prof','coordenacao','unepe','valor_total','status','criado');
                      $Site->selecionar('tblmvmped', $dados, false, 'id DESC LIMIT 10','0');
                      foreach($Site->Listar() as $campos){
                         if($campos['status'] == 0){
@@ -106,6 +109,9 @@
                   <tr>
                     <td>
                       <?php echo $campos['id']; ?>
+                    </td>
+                    <td>
+                      <?php echo $campos['coordenacao']; ?> <!-- SELECT UNEP  -->
                     </td>
                     <td>
                       <?php echo $campos['unepe']; ?> <!-- SELECT UNEP  -->
@@ -141,7 +147,10 @@
                       ID pedido
                     </th>
                     <th>
-                      Unep solicitada
+                       Coordenação solicitada
+                    </th>
+                    <th>
+                      Unepe solicitada
                     </th>
                     <th>
                       Detalhes do pedido
@@ -156,7 +165,7 @@
                 </thead>
                 <tbody>
                   <?php
-                     $dados = array('id','id_prof','unepe','valor_total','status','criado');
+                     $dados = array('id','id_prof','coordenacao','unepe','valor_total','status','criado');
                      $Site->selecionar('tblmvmped', $dados, false, 'id DESC LIMIT 5','2');
                      foreach($Site->Listar() as $campos){
                         if($campos['status'] == 0){
@@ -176,10 +185,13 @@
                       <?php echo $campos['id']; ?>
                     </td>
                     <td>
+                      <?php echo $campos['coordenacao']; ?> <!-- SELECT UNEP  -->
+                    </td>
+                    <td>
                       <?php echo $campos['unepe']; ?>
                     </td>
                     <td>
-                      <label class="badge badge-gradient-info">Visualizar</label>
+                      <a class="badge badge-gradient-info" href="?pagina=detPedidos&pedido_id=<?php echo $campos['id']; ?>">Visualizar</a>
                     </td>
                     <td>
                       <?php echo date('d/m/Y', strtotime($campos['criado'])); ?>

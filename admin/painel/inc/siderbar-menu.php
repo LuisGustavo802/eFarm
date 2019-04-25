@@ -124,8 +124,8 @@
        </a>
        <div class="collapse" id="general-pages8">
          <ul class="nav flex-column sub-menu">
-           <li class="nav-item"> <a class="nav-link" href="?pagina=geraRelResumido"> Gerar relatório resumido </a></li>
-           <li class="nav-item"> <a class="nav-link" href="?pagina=geraRelCompleto"> Gerar relatório completo </a></li>
+           <li class="nav-item"> <a class="nav-link" href="?pagina=geraRelResumido"> Relatório Resumido </a></li>
+           <li class="nav-item"> <a class="nav-link" href="?pagina=geraRelCompleto"> Relatório Completo </a></li>
          </ul>
          </div>
      </li>

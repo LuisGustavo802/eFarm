@@ -4,7 +4,7 @@
 	 $pegar_dados_categoria->execute(array($pegar_categoria));
 	 $fetch_cat = $pegar_dados_categoria->fetchObject();
 ?>
-<section class="categories_product_main p_80">
+<section class="categories_product_main">
         <div class="categories_main_inner">
             <div class="row row_disable">
                 <div class="col-lg-9 float-md-right">
@@ -57,7 +57,9 @@
 																$sql_res = BD::conn()->prepare("SELECT * FROM `tblcdsprod` WHERE categoria = ?");
 																$sql_res-> execute(array($pegar_categoria));
 																$total = $sql_res->rowCount();
-																$pags = ceil($total/$maximo);
+																if($total != 0){
+																	$pags = ceil($total/$maximo);
+																}
 																$links = '5';
 
 																echo	'<span>Página: <a>'.$pg.'</a></span>';
@@ -79,8 +81,8 @@
                 </div>
                 <div class="col-lg-3 float-md-right">
                     <div class="categories_sidebar">
-                        <aside class="l_widgest l_p_categories_widget">
-                            <div class="l_w_title">
+											<aside class="l_widget l_categories_widget">
+                          <div class="l_title">
                               <a href="<?php PATH.'loja' ?>"><h3>Categorias</h3></a>
                             </div>
                                 <?php include_once"inc/menucategorialoja.php" ?>

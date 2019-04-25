@@ -56,13 +56,13 @@ endif;
                          while($produto = $pegar_produtos->fetchObject()){
                       ?>
                       <td>
-                        <?php echo $produto->titulo; ?>
+                        <?php echo utf8_encode($produto->titulo); ?>
                       </td>
                       <td>
                         R$ <?php echo number_format($produto->valor_atual, 2,',','.'); ?>
                       </td>
                       <td>
-                        <?php echo $produto->categoria; ?>
+                        <?php echo utf8_encode($produto->categoria); ?>
                       </td>
                       <td>
                         <a class="badge badge-gradient-info" href="index.php?pagina=editProdutos&produto=<?php echo $produto->id; ?>">Editar</a>

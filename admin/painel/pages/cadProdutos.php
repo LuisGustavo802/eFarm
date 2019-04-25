@@ -44,11 +44,11 @@ if(isset($_POST['acao']) && $_POST['acao'] == 'Cadastrar'):
           $dados = array(   'img_padrao'     => $nomeImg,
                             'titulo'         => utf8_decode($titulo),
                             'slug'           => $slug,
-                            'categoria'      => $categoria,
+                            'categoria'      =>  utf8_decode($categoria),
                             'subcategoria'   => 'EM PRODUCAO',
                             'valor_anterior' => $valAnterior,
                             'valor_atual'    => $valAtual,
-                            'descricao'      => $descricao,
+                            'descricao'      =>  utf8_decode($descricao),
                             'peso'           => $peso,
                             'estoque'        => $qtdEstoque,
                             'data'           => $now

@@ -17,6 +17,9 @@
                         PROFESSOR
                       </th>
                       <th>
+                        COORDENAÇÃO
+                      </th>
+                      <th>
                         UNEPE
                       </th>
                       <th>
@@ -40,7 +43,7 @@
                   <h5 class="text-left">Emissor: <?php echo $usuarioLogado->nome ?></h5>
                   <h5 class="text-left">Data: <?php $data = date('d/m/Y'); echo $data ?></h5>
                   <h5 class="text-left mb-3">Hora: <?php $hora = date('H:i:s'); echo $hora ?></h5>
-                  <h3 class="text-center mb-5">RELATÓRIO COMPLETO DE PEDIDOS</h3>
+                  <h3 class="text-center mb-5">RELATÓRIO COMPLETO DE PEDIDOS AUTORIZADOS</h3>
                   <tbody>
                     <?php
                        $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
@@ -62,7 +65,7 @@
                               $btnSts = 'danger';
                           }
                           $id_pedido   = $campos['id'];
-                          $pegar_dados = BD::conn()->prepare("SELECT * FROM `tblmvmped` WHERE id = ?");
+                          $pegar_dados = BD::conn()->prepare("SELECT * FROM `tblmvmped` WHERE id = ? and status = 1");
                           $pegar_dados->execute(array($id_pedido));
                           $fetchPedido = $pegar_dados->fetchObject();
 
@@ -82,16 +85,19 @@
                         <?php echo $campos['id']; ?>
                       </td>
                       <td>
-                        <?php echo $dadosProf->nome ?>
+                        <?php echo utf8_encode($dadosProf->nome); ?>
                       </td>
                       <td>
-                        <?php echo $campos['unepe']; ?>
+                        <?php echo utf8_encode($produto->coordenacao); ?>
                       </td>
                       <td>
-                        <?php echo $fetch->titulo; ?>
+                        <?php echo utf8_encode($campos['unepe']); ?>
                       </td>
                       <td>
-                        <?php echo $produto->qtd ?>
+                        <?php echo utf8_encode($fetch->titulo); ?>
+                      </td>
+                      <td>
+                        <?php echo $produto->qtd; ?>
                       </td>
                       <td>
                         <?php echo date('d/m/Y', strtotime($campos['criado'])); ?>

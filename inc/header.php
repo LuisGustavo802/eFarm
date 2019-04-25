@@ -57,7 +57,7 @@
                         <?php }else{	?>
                           <li><a href="<?php echo PATH.'cadastro' ?>">CADASTRAR-SE</a></li>
                           <li><a href="#">|</a></li>
-                          <li><a href="<?php echo PATH.'verificar' ?>">ENTRAR</a></li>
+                          <li><a href="<?php echo PATH.'login' ?>">ENTRAR</a></li>
                         <?php }	?>
                     </ul>
                 </div>

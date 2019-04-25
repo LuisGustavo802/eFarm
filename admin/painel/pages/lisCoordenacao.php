@@ -51,7 +51,7 @@
                         <?php echo $coordenacao->id; ?>
                       </td>
                       <td>
-                        <?php echo $coordenacao->nome; ?>
+                        <?php echo utf8_encode($coordenacao->nome); ?>
                       </td>
                       <td>
                         <a class="badge badge-gradient-info" href="index.php?pagina=editCoordenacao&coordenacao=<?php echo $coordenacao->id; ?>">Editar</a>

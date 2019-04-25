@@ -38,7 +38,7 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosCat->titulo ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo utf8_encode($dadosCat->titulo); ?>">
             </div>
             <button type="submit" class="btn btn-gradient-primary mr-2" value="Próximo Passo">Editar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Editar"/>

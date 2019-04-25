@@ -107,7 +107,7 @@
                                        <div class="g-recaptcha" data-sitekey="6LdfMJ8UAAAAALD5aUTrIF0b5_7m7gbIdgUGKCZD"></div>
                                     </div>
                                     <h3></h3>
-                                    <div class="form-group mt-4">
+                                    <div class="form-group mt-3">
                                         <label for="pwd"><span></span></label>
                                         <input type="hidden" value="<?php echo $_SESSION['_token']?>" name="hash">
                                         <button type="submit" class="btn update_btn btn-default" id="btnUpdate" name="acao" value="cadProf">Cadastrar-se</button>

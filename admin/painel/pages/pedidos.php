@@ -13,6 +13,9 @@
                       ID pedido
                     </th>
                     <th>
+                      Coordenação solicitada
+                    </th>
+                    <th>
                       Unepe solicitada
                     </th>
                     <th>
@@ -31,7 +34,7 @@
                      $pg = (isset($_GET['pg'])) ? (int)htmlentities($_GET['pg']) : '1';
                      $maximo = '10';
                      $inicio = (($pg * $maximo) - $maximo);
-                     $dados = array('id','id_prof','unepe','valor_total','status','criado');
+                     $dados = array('id','id_prof','coordenacao','unepe','valor_total','status','criado');
                      $Site->selecionarPedidos('tblmvmped', $dados, false, 'id DESC');
                      foreach($Site->Listar() as $campos){
                         if($campos['status'] == 0){
@@ -52,7 +55,10 @@
                       <?php echo $campos['id']; ?>
                     </td>
                     <td>
-                      <?php echo $campos['unepe']; ?>
+                      <?php echo utf8_encode($campos['coordenacao']); ?>
+                    </td>
+                    <td>
+                      <?php echo utf8_encode($campos['unepe']); ?>
                     </td>
                     <td>
                       <a class="badge badge-gradient-info" href="?pagina=detPedidos&pedido_id=<?php echo $campos['id']; ?>">Visualizar</a>

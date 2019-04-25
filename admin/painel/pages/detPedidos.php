@@ -111,7 +111,7 @@
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input" name="check[]" value="<?php echo $produto->id_produto; ?>">
-                        <?php echo $fetch->titulo; ?>
+                        <?php echo utf8_encode($fetch->titulo); ?>
                       </label>
                     </div>
                    <?php } ?>
@@ -133,7 +133,7 @@
                    <select class="form-control form-control-lg" name="status">
                      <option value="" value="selected">Selecione</option>
                      <option value="0">Pendente</option>
-                     <option value="1">Pedido</option>
+                     <option value="1">Autorizado</option>
                      <option value="2">Recusado</option>
                    </select>
                  </div>

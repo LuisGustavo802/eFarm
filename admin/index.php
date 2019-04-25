@@ -12,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>ONCE - Painel Admin</title>
+  <title>eFarm - Painel Admin</title>
   <link rel="stylesheet" href="../admin/painel/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../admin/painel/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../admin/painel/css/style.css">
@@ -45,11 +45,11 @@
               <div class="brand-logo">
                 <img src="../admin/painel/images/logo.png">
               </div>
-              <h4>Ola adminstrador!</h4>
+              <h4>Olá adminstrador!</h4>
               <h6 class="font-weight-light">Faça o login para continuar</h6>
               <form class="pt-3" action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Nome" name="email">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="email">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Senha" name="senha">

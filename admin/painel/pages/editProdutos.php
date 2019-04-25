@@ -85,7 +85,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputName1">Titulo do produto:</label>
-              <input type="text" class="form-control" name="titulo" placeholder="Titulo" value="<?php echo $dadosProd->titulo; ?>">
+              <input type="text" class="form-control" name="titulo" placeholder="Titulo" value="<?php echo utf8_encode($dadosProd->titulo); ?>">
             </div>
             <div class="form-group">
               <label for="exampleSelectGender">Escolha a categoria:</label>
@@ -96,7 +96,7 @@
                       $pegar_categorias->execute();
                       while($cat = $pegar_categorias->fetchObject()){
                   ?>
-                  <option value="<?php echo $cat->slug; ?>"><?php echo $cat->titulo; ?></option>
+                  <option value="<?php echo $cat->slug; ?>"><?php echo utf8_encode($cat->titulo); ?></option>
                 <?php } ?>
                 </select>
             </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="form-group">
               <label for="exampleTextarea1">Descrição do produto:</label>
-              <textarea class="form-control" name="descricao" rows="5"><?php echo $dadosProd->descricao; ?></textarea>
+              <textarea class="form-control" name="descricao" rows="5"><?php echo utf8_encode($dadosProd->descricao); ?></textarea>
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Peso do produto:</label>

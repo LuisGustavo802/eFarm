@@ -27,7 +27,7 @@
                  </div>';
           }else{
               $dados = array(
-                              'nome'         => utf8_decode($nome),
+                              'nome'         => $nome,
                               'cnpj'         => $cnpj,
                               'cpf'          => $cpf,
                               'email'        => $email,
@@ -35,7 +35,7 @@
                               'endereco'     => $endereco,
                               'bairro'       => $bairro,
                               'complemento'  => $complemento,
-                              'cidade'       => $cidade
+                              'cidade'       =  $cidade
                             );
               if($Site->inserir('tblcdsfor', $dados)){
                   echo '<script>alert("Ok, fornecedor cadastrado com sucesso!");location:href="index.php?pagina=lisFornecedor"</script>';

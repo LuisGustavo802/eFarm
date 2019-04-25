@@ -54,7 +54,7 @@
                         <?php echo $professor->id; ?>
                       </td>
                       <td>
-                        <?php echo $professor->nome; ?>
+                        <?php echo utf8_encode($professor->nome); ?>
                       </td>
                       <td>
                         <?php echo $professor->email; ?>

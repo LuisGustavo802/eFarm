@@ -54,7 +54,7 @@
                         <?php echo $fornecedor->id; ?>
                       </td>
                       <td>
-                        <?php echo $fornecedor->nome; ?>
+                        <?php echo utf8_encode($fornecedor->nome); ?>
                       </td>
                       <td>
                         <?php echo $fornecedor->email; ?>

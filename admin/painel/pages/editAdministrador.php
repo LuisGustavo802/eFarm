@@ -17,6 +17,12 @@
       }else{
           $checkCoordenacao = 0;
       }
+      if(isset($_POST['checkOrcamento']))
+      {
+          $checkOrcamento = $_POST['checkOrcamento'][0];
+      }else{
+          $checkOrcamento = 0;
+      }
       if(isset($_POST['checkUnepe']))
       {
           $checkUnepe = $_POST['checkUnepe'][0];
@@ -73,16 +79,16 @@
       }else{
           $data = date('Y-m-d');
           $verificarAdm = BD::conn()->prepare("SELECT id FROM `tblcdsadm` WHERE nome = ? and email = ? and senha = ? and data = ? and opCoo = ? and opUne = ? and opFor = ? and opAdm = ? and
-                                              opProf = ? and opCat = ? and opProd = ? and opPed = ? and opRel = ?");
+                                              opProf = ? and opCat = ? and opProd = ? and opPed = ? and opRel = ? and opOrc = ?");
           $verificarAdm->execute(array($nome,$emailLog,$senhaLog,$data,$checkCoordenacao,$checkUnepe,$checkFornecedor,$checkAdministrador,$checkProfessor,$checkCategoria,
-                                       $checkProduto,$checkPedido,$checkRelatorio)); //select sem senha criptografa.
+                                       $checkProduto,$checkPedido,$checkRelatorio,$checkOrcamento)); //select sem senha criptografa.
           if($verificarAdm->rowCount() > 0){
               echo '<script>alert("Não é possivel editar sem alguma alteração!");location:href="index.php?pagina=lisAdministrador"</script>';
           }else{
               $update = BD::conn()->prepare("UPDATE `tblcdsadm` SET nome = ? , email = ? , senha = ? , data = ? , opCoo = ? , opUne = ? , opFor = ? ,opAdm = ?,
-                                            opProf = ? , opCat = ? , opProd = ? , opPed = ? , opRel = ? WHERE id = ?");
+                                            opProf = ? , opCat = ? , opProd = ? , opPed = ? , opRel = ?, opOrc = ? WHERE id = ?");
               $dados = array($nome,$emailLog,$senhaLog,$data,$checkCoordenacao,$checkUnepe,$checkFornecedor,$checkAdministrador,$checkProfessor,$checkCategoria,
-                                            $checkProduto,$checkPedido,$checkRelatorio,$idAdministrador);
+                                            $checkProduto,$checkPedido,$checkRelatorio,$checkOrcamento,$idAdministrador);
               if($update->execute($dados)){
                  header("Location: index.php?pagina=lisAdministrador");
               }else{
@@ -101,7 +107,7 @@
           <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="exampleInputName1">Nome:</label>
-              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo $dadosAdm->nome; ?>">
+              <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo utf8_encode($dadosAdm->nome); ?>">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">Email:</label>
@@ -112,102 +118,85 @@
               <input type="password" class="form-control" name="senhaLog" placeholder="Senha" value="<?php echo $dadosAdm->senha; ?>">
             </div>
             <label class="card-title mt-5">Liberação de menu</label>
+            <?php
+            if ($dadosAdm->opCoo == 1){
+                $checkCoo = 'checked';
+            }else{
+                $checkCoo = 'nochecked';
+            }
+            if ($dadosAdm->opUne == 1){
+                $checkUne = 'checked';
+            }else{
+                $checkUne = 'nochecked';
+            }
+            if ($dadosAdm->opFor == 1){
+                $checkFor = 'checked';
+            }else{
+                $checkFor = 'nochecked';
+            }
+            if ($dadosAdm->opAdm == 1){
+                $checkAdm = 'checked';
+            }else{
+                $checkAdm = 'nochecked';
+            }
+            if ($dadosAdm->opProf == 1){
+                $checkProf = 'checked';
+            }else{
+                $checkProf = 'nochecked';
+            }
+            if ($dadosAdm->opCat == 1){
+                $checkCat = 'checked';
+            }else{
+                $checkCat = 'nochecked';
+            }
+            if ($dadosAdm->opProd == 1){
+                $checkProd = 'checked';
+            }else{
+                $checkProd = 'nochecked';
+            }
+            if ($dadosAdm->opPed == 1){
+                $checkPed = 'checked';
+            }else{
+                $checkPed = 'nochecked';
+            }
+            if ($dadosAdm->opRel == 1){
+                $checkRel = 'checked';
+            }else{
+                $checkRel = 'nochecked';
+            }
+            if ($dadosAdm->opOrc == 1){
+                $checkOrc = 'checked';
+            }else{
+                $checkOrc = 'nochecked';
+            }
+            ?>
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
                     <th>
-                      Menu Coordenações
-                    </th>
-                    <th>
-                      Menu Unepes
-                    </th>
-                    <th>
-                      Menu Fornecedores
-                    </th>
-                    <th>
                       Menu Administradores
-                    </th>
-                    <th>
-                      Menu Professores
                     </th>
                     <th>
                       Menu Categorias
                     </th>
                     <th>
-                      Menu Produtos
+                      Menu Coordenações
                     </th>
                     <th>
-                      Menu Pedidos
+                      Menu Fornecedores
                     </th>
                     <th>
-                      Menu Relatórios
+                      Menu Orçamentos
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <?php
-                      if ($dadosAdm->opCoo == 1){
-                          $checkCoo = 'checked';
-                      }
-                      if ($dadosAdm->opUne == 1){
-                          $checkUne = 'checked';
-                      }
-                      if ($dadosAdm->opFor == 1){
-                          $checkFor = 'checked';
-                      }
-                      if ($dadosAdm->opAdm == 1){
-                          $checkAdm = 'checked';
-                      }
-                      if ($dadosAdm->opProf == 1){
-                          $checkProf = 'checked';
-                      }
-                      if ($dadosAdm->opCat == 1){
-                          $checkCat = 'checked';
-                      }
-                      if ($dadosAdm->opProd == 1){
-                          $checkProd = 'checked';
-                      }
-                      if ($dadosAdm->opPed == 1){
-                          $checkPed = 'checked';
-                      }
-                      if ($dadosAdm->opRel == 1){
-                          $checkRel = 'checked';
-                      }
-                      ?>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkCoordenacao[]" value="1" <?php echo $checkCoo ?>>Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1" <?php echo $checkUne ?>>Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1" <?php echo $checkFor ?>>Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
                       <div class="form-check">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" name="checkAdministrador[]" value="1" <?php echo $checkAdm ?>>Permitir
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkProfessor[]" value="1" <?php echo $checkProf ?>>Permitir
                         </label>
                       </div>
                     </td>
@@ -221,10 +210,51 @@
                     <td>
                       <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="checkProduto[]" value="1" <?php echo $checkProd ?>>Permitir
+                          <input type="checkbox" class="form-check-input" name="checkCoordenacao[]" value="1" <?php echo $checkCoo ?>>Permitir
                         </label>
                       </div>
                     </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkFornecedor[]" value="1" <?php echo $checkFor ?>>Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkOrcamento[]" value="1" <?php echo $checkOrc ?>>Permitir
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      Menu Pedidos
+                    </th>
+                    <th>
+                      Menu Produtos
+                    </th>
+                    <th>
+                      Menu Professores
+                    </th>
+                    <th>
+                      Menu Relatórios
+                    </th>
+                    <th>
+                      Menu Unepes
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
                     <td>
                       <div class="form-check">
                         <label class="form-check-label">
@@ -235,14 +265,35 @@
                     <td>
                       <div class="form-check">
                         <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkProduto[]" value="1" <?php echo $checkProd ?>>Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkProfessor[]" value="1" <?php echo $checkProf ?>>Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
                           <input type="checkbox" class="form-check-input" name="checkRelatorio[]" value="1" <?php echo $checkRel ?>> Permitir
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="checkUnepe[]" value="1" <?php echo $checkUne ?>>Permitir
                         </label>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              </div>
+            </div>
             <button type="submit" class="btn btn-gradient-primary mr-2 mt-5" value="Próximo Passo">Editar</button>
             <input type="hidden" class="btn btn-gradient-primary mr-2" name="acao" value="Editar"/>
           </form>
