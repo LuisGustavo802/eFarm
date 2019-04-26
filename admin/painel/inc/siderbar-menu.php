@@ -69,6 +69,21 @@
         </div>
     </li>
     <?php } ?>
+    <?php if($usuarioLogado->opOrc == '1') { ?>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#general-pages10" aria-expanded="false" aria-controls="general-pages10">
+        <span class="menu-title">Orçamentos</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-clipboard-text menu-icon"></i>
+      </a>
+      <div class="collapse" id="general-pages10">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="?pagina=cadOrcamento"> Cadastrar orçamento </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Listar orçamentos </a></li>
+        </ul>
+        </div>
+    </li>
+    <?php } ?>
     <?php if($usuarioLogado->opPed == '1') { ?>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#general-pages5" aria-expanded="false" aria-controls="general-pages5">

@@ -82,7 +82,7 @@
                             <div class="checkout_method">
                                 <h3>Já é cadastrado?</h3>
                                 <h4>Aproveite o sistema agora mesmo!</h4>
-                                <a class="btn update_btn btn-default" href="<?php echo PATH.'verificar'; ?>"><span>Entrar</span></a>
+                                <a class="btn update_btn btn-default" href="<?php echo PATH.'login'; ?>"><span>Entrar</span></a>
                             </div>
                         </div>
                         <div class="col-md-6">

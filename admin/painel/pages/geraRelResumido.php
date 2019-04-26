@@ -1,4 +1,3 @@
-<?php date_default_timezone_set("America/Sao_Paulo"); ?>
 <div id="box-suport"><a onclick="printDiv('imprimir')"><img src="images/suport.png" alt="Imprimir relatório" title="Imprimir relatório" class="print"></a></div>
   <div class="main-panel" id="imprimir">
     <div class="content-wrapper">

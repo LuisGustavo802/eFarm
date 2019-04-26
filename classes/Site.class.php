@@ -3,6 +3,18 @@
 
       private $conexao;
 
+      public function getData(){
+        $data = getdate();
+        $diaHoje = date('d');
+        $array_meses = array(1 => "JANEIRO", 2 => "FEVEREIRO", 3 => "MARÇO", 4 => "ABRIL", 5 => "MAIO", 6 => "JUNHO", 7 => "JULHO", 8 => "AGOSTO", 9 => "SETEMBRO", 10 => "OUTUBRO", 11 => "NOVEMBRO", 12 => "DEZEMBRO");
+
+        $horaAgora = date('H:i');
+        $mesgetdate = $data['mon'];
+        $anoAtual = date('Y');
+
+        return 'HOJE, '.$diaHoje.' DE '.$array_meses[$mesgetdate].' DE '.$anoAtual.', ÀS '.$horaAgora.'';
+    }
+
       //PRODUTOS
       public function getProdutoHome($inicio = false, $maximo = false){
         if (($inicio == false) AND ($maximo == false)){

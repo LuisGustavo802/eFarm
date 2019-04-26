@@ -3,9 +3,11 @@
     "",
     "\\admin",
     "\\admin\\painel",
-    "\\admin\\painel\\pages",
-    "\\classes"
+    "\\admin\\painel\\inc",
+    "\\classes",
+    "\\img",
+    "\\inc"
   ],
-  "SelectedNode": "\\admin\\index.php",
+  "SelectedNode": "\\classes\\BD.class.php",
   "PreviewInSolutionExplorer": false
 }

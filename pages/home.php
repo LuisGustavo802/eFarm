@@ -21,7 +21,7 @@
                             <img class="imgborder" src="img/agro.jpg">
                         </ul>
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="col-lg-3 float-md-right">
                 <div class="left_sidebar_area">

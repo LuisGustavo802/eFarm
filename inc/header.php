@@ -1,6 +1,7 @@
 <?php
     ob_start(); //LIMPA BUFFER
     session_start(); //START DA SESSION
+    date_default_timezone_set("America/Sao_Paulo");
     include_once "config.php";
     spl_autoload_register(function($classe){
        require_once 'classes/'.$classe.'.class.php';
@@ -15,12 +16,12 @@
   		$stmt->execute(array($_SESSION['eFarm_emailLog'], $_SESSION['eFarm_senhaLog']));
   		$usuarioLogado = $stmt->fetchObject();
   	}
-	  if(isset($_GET['acao']) && $_GET['acao'] == 'sair'){
-			if($login->deslogar()){}
+    if(isset($_GET['acao']) && $_GET['acao'] == 'sair'){
+        if($login->deslogar()){}
   	}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,6 +47,11 @@
     <div class="carousel_top_header black_top_header row m0">
         <div class="container">
             <div class="carousel_top_h_inner">
+            <div class="float-md-left">
+                    <ul class="account_list">
+                    <li><a href=""><?php echo $Site->getData(); ?></a></li>
+                    </ul>
+                </div>
                 <div class="float-md-right">
                     <ul class="account_list">
                         <?php if($login->isLogado()){ ?>
@@ -76,13 +82,13 @@
                     </ul>
                     <ul class="navbar-nav justify-content-end">
                         <?php if($login->isLogado()){ ?>
-                          <li class="user_icon"><a href="<?php echo PATH.'admCliente' ?>"><i class="icon-user icons"></i></a></li>
+                          <li class="user_icon"><a href="<?php echo PATH.'painelProf' ?>"><i class="icon-user icons"></i></a></li>
                         <?php }else{	?>
                             <li class="user_icon"><a href="<?php echo PATH.'verificar' ?>"><i class="icon-user icons"></i></a></li>
                         <?php }	?>
                             <li class="cart_cart"><a href="<?php echo PATH.'carrinho' ?>"><i class="icon-handbag"></i>
                             <?php echo $Carrinho->qtdProdutos(); ?></a></li><!--quantidade no carrinho! -->
-                    </ul>
+                    </ul> 
                 </div>
             </nav>
         </div>
