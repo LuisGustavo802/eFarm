@@ -85,7 +85,7 @@
                           <div class="l_title">
                               <a href="<?php PATH.'loja' ?>"><h3>Categorias</h3></a>
                             </div>
-                                <?php include_once"inc/menucategorialoja.php" ?>
+                                <?php include_once "inc/menucategorialoja.php" ?>
                         </aside>
                     </div>
                 </div>

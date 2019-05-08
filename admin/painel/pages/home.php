@@ -2,10 +2,10 @@
     //professores cadastrados
     $clientesCad = BD::conn()->prepare("SELECT id FROM `tblcdsprof`");
     $clientesCad->execute();
-    //produtos cadastrados
-    $prodCad = BD::conn()->prepare("SELECT id FROM `tblcdsprod`");
-    $prodCad->execute();
-    //pedidos em aguardo
+    //produtos autorizados
+    $pedstsaut = BD::conn()->prepare("SELECT status FROM `tblmvmped` WHERE status = 1");
+    $pedstsaut->execute();
+    //pedidos em pendencia
     $pedstsped = BD::conn()->prepare("SELECT status FROM `tblmvmped` WHERE status = 0");
     $pedstsped->execute();
     //pedidos recusados
@@ -16,29 +16,18 @@
  <?php if($usuarioLogado->opPed == '1') { ?>
   <div class="content-wrapper">
     <div class="row">
-      <div class="col-md-3 stretch-card grid-margin">
+      <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-success card-img-holder text-white">
           <div class="card-body">
             <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-            <h4 class="font-weight-normal mb-3">Professores
+            <h4 class="font-weight-normal mb-3">Pedidos Pendentes
             </h4>
-            <h2 class="mb-5"><?php echo $clientesCad->rowCount(); ?></h2>
-            <h6 class="card-text">Cadastros</h6>
+            <h2 class="mb-5"><?php echo $pedstsaut->rowCount(); ?></h2>
+            <h6 class="card-text">Status</h6>
           </div>
         </div>
       </div>
-      <div class="col-md-3 stretch-card grid-margin">
-        <div class="card bg-gradient-info card-img-holder text-white">
-          <div class="card-body">
-            <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
-            <h4 class="font-weight-normal mb-3">Produtos
-            </h4>
-            <h2 class="mb-5"><?php echo $prodCad->rowCount(); ?></h2>
-            <h6 class="card-text">Cadastros</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 stretch-card grid-margin">
+      <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-warning card-img-holder text-white">
           <div class="card-body">
             <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>
@@ -49,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 stretch-card grid-margin">
+      <div class="col-md-4 stretch-card grid-margin">
         <div class="card bg-gradient-danger card-img-holder text-white">
           <div class="card-body">
             <img src="images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image"/>

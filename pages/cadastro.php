@@ -85,7 +85,7 @@
                                 <a class="btn update_btn btn-default" href="<?php echo PATH.'login'; ?>"><span>Entrar</span></a>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 card" id="card">
                             <div class="row checkout_from_area">
                                <h2>Cadastro</h2>
                                <p>Por favor, informe seus dados :</p>

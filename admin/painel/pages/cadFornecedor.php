@@ -35,7 +35,7 @@
                               'endereco'     => $endereco,
                               'bairro'       => $bairro,
                               'complemento'  => $complemento,
-                              'cidade'       =  $cidade
+                              'cidade'       =>  $cidade
                             );
               if($Site->inserir('tblcdsfor', $dados)){
                   echo '<script>alert("Ok, fornecedor cadastrado com sucesso!");location:href="index.php?pagina=lisFornecedor"</script>';

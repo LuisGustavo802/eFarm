@@ -53,12 +53,12 @@
                             <div class="checkout_method">
                                 <h3>Ainda não é cadastrado?</h3>
                                 <h4>Se cadastre agora mesmo!</h4>
-																<a class="update_btn" href="<?php echo PATH.'cadastro'; ?>"><span>Cadastrar</span></a>
-																<h5>Ajuda eFarm!</h5>
-																<h6>Esqueceu sua senha?</h6>
+									<a class="update_btn" href="<?php echo PATH.'cadastro'; ?>"><span>Cadastrar</span></a>
+									<h5>Ajuda eFarm!</h5>
+									<h6>Esqueceu sua senha?</h6>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 card" id="card">
                             <div class="row checkout_from_area">
                                <h2>Login</h2>
                                <p>Por favor, informe seus dados:</p>

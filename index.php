@@ -5,7 +5,7 @@
 <?php
     $url = (isset($_GET['url'])) ? htmlentities(strip_tags($_GET['url'])) : '';
     $parametros = explode('/', $url);
-    $paginas_permitidas = array('login','produto','carrinho','verificar','finalizar','cadastro','painelProf');
+    $paginas_permitidas = array('login','produto','carrinho','verificar','finalizar','cadastro','professor','pedidos');
 
     if(isset($_GET['s']) && $_GET['s'] != ''){
         include_once "pages/busca.php";

@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\admin",
-    "\\admin\\painel",
-    "\\admin\\painel\\inc",
     "\\classes",
+    "\\css",
     "\\img",
     "\\inc"
   ],
-  "SelectedNode": "\\classes\\BD.class.php",
+  "SelectedNode": "\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }

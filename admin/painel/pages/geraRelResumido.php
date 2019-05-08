@@ -10,9 +10,6 @@
                   <thead>
                     <tr>
                       <th>
-                        CATEGORIA
-                      </th>
-                      <th>
                         PRODUTO
                       </th>
                       <th>
@@ -41,14 +38,11 @@
                                                              ORDER BY produto.titulo");
                       $pegar_produtos->execute();
                       if($pegar_produtos->rowCount() == 0){
-                         echo '<tr><td>Não foram encontrados pedidos no banco de dados!</td></tr>';
+                         echo '<tr><td>Não foram encontrados pedidos no banco de dados!</td><td></td><td></td><td></td></tr>';
                       }else{
                          while($produtopedidos = $pegar_produtos->fetchObject()){
                       ?>
                     <tr>
-                      <td>
-                        <?php echo $produtopedidos->categoria; ?>
-                      </td>
                       <td>
                         <?php echo $produtopedidos->titulo; ?>
                       </td>

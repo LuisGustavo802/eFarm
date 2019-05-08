@@ -17,7 +17,7 @@
         $atualizar_qtds = BD::conn()->prepare("UPDATE `tblcdsprod` SET estoque = estoque-$qtd WHERE id = ?");
         $atualizar_qtds->execute(array($id));
 
-				 header("Location: ".PATH."admCliente");
+				 header("Location: ".PATH."painelProf");
 			}
 		//	$_SESSION['realizado'] = 1; //tratar depois, deve sumir para fazer inserção de pedidos
 		}

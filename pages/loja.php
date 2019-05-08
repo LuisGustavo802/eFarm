@@ -24,7 +24,7 @@
                                     <div class="l_p_text">
                                        <ul>
                                             <li class="p_icon"><a href="<?php echo PATH.'produto/'.$produto['slug']; ?>"><i class="icon-eye"></i></a></li>
-                                            <li><a class="add_cart_btn" href="<?php echo PATH.'carrinho/add/'.$produto['id']; ?>">Add carrinho</a></li>
+                                            <li><a class="add_cart_btn" href="<?php echo PATH.'carrinho/add/'.$produto['id']; ?>">Solicitar</a></li>
                                         </ul>
                                         <h4><?php echo $produto['titulo']; ?></h4>
                                         <h5>R$ <?php echo number_format($produto['valor_atual'], 2,',','.'); ?></h5>

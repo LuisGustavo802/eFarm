@@ -74,7 +74,7 @@
       <a class="nav-link" data-toggle="collapse" href="#general-pages10" aria-expanded="false" aria-controls="general-pages10">
         <span class="menu-title">Orçamentos</span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-clipboard-text menu-icon"></i>
+        <i class="mdi mdi-currency-usd menu-icon"></i>
       </a>
       <div class="collapse" id="general-pages10">
         <ul class="nav flex-column sub-menu">

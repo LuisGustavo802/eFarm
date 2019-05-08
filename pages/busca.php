@@ -42,7 +42,7 @@
                                   if($buscar->rowCount() > 0){
                                       while($resultado = $buscar->fetchObject()){
                                 ?>
-                                <h4>Encontrados <?php echo $buscar->rowCount(); ?> registros <h4>
+                                <h4>Encontrado(s) <?php echo $buscar->rowCount(); ?> registro(s) <h4>
                             </div>
                         </div>
                     </div>
@@ -65,14 +65,14 @@
                             </div>
                         </div>
                         <?php }}else{ ?>
-                                    <h4>Encontrados <?php echo $buscar->rowCount(); ?> registros <h4>
+                                    <h4>Encontrado(s) <?php echo $buscar->rowCount(); ?> registro(s) <h4>
                                 </div>
                             </div>
                         </div>
                           <div class="categories_product_area">
                               <div class="row">
                                   <div class="col-lg-4 col-sm-6">
-                                  </h4>Não foi encontrado produto com essa busca.</h4>
+                                  </h4>Não foi encontrado produto(s) com essa busca.</h4>
                                   </div>
                               </div>
                         <?php } ?>
@@ -111,7 +111,7 @@
                     <div class="categories_sidebar">
 											<aside class="l_widget l_categories_widget">
                           <div class="l_title">
-                              <a href="<?php PATH.'loja' ?>"><h3>Categories</h3></a>
+                              <a href="<?php PATH.'loja' ?>"><h3>Categorias</h3></a>
                             </div>
                                 <?php include_once"inc/menucategorialoja.php" ?>
                         </aside>
