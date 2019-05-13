@@ -1,0 +1,18 @@
+.print-nao {
+display:none;
+}
+
+.no-print {
+display:block;
+}
+
+.ql1 {
+  page-break-inside: avoid;
+}
+
+.print{
+  table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+tfoot { display:table-footer-group }
+}
