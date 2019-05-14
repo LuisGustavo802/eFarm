@@ -20,13 +20,12 @@ if (isset($_POST['acao']) && $_POST['acao'] == 'Editar') {
     if ($verificarProf->rowCount() > 0) {
       echo '<script>alert("Já existe um professor com esses dados!");location:href="index.php"</script>';
     } else {
-      if (substr($usuarioLogado->email, 0, 4) == "prof") {
-        $options = ['cost' => 10,];
-        $update = BD::conn()->prepare("UPDATE `tblcdsprof` SET nome = ?, senha = ?, tipo_usuario = ? where id = ?");
-        $dados = array($nome, password_hash($senhaLog, PASSWORD_DEFAULT, $options), '0', $idProfessor);
-        if ($update->execute($dados)) {
-          echo '<script>alert("Ok, dados atualizados com sucesso!");location:href="index.php"</script>';
-        }
+      $options = ['cost' => 10,];
+      $update = BD::conn()->prepare("UPDATE `tblcdsprof` SET nome = ?, senha = ?, tipo_usuario = ? where id = ?");
+      $dados = array($nome, password_hash($senhaLog, PASSWORD_DEFAULT, $options), '0', $idProfessor);
+      if ($update->execute($dados)) {
+        session_destroy();
+        echo '<script>alert("Ok, dados atualizados com sucesso!");location:href="index.php"</script>';
       } else {
         echo '<script>alert("Erro, não foi possivel editar os seus dados!");location:href="index.php"</script>';
       }

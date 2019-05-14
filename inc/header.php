@@ -83,7 +83,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'sair') {
                         </ul>
                         <ul class="navbar-nav justify-content-end">
                             <?php if ($login->isLogado()) { ?>
-                                <li class="user_icon"><a href="<?php echo PATH . 'professor' ?>"><i class="icon-user icons"></i></a></li>
+                                <li class="user_icon"><a href="<?php echo PATH . 'adminProfessor' ?>"><i class="icon-user icons"></i></a></li>
                             <?php } else {    ?>
                                 <li class="user_icon"><a href="<?php echo PATH . 'verificar' ?>"><i class="icon-user icons"></i></a></li>
                             <?php }    ?>
